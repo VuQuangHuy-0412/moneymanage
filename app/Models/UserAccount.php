@@ -15,5 +15,5 @@ class UserAccount extends Model
 
     protected $primaryKey = 'user_account_id';
 
-    public $timestamps = true;
+    public $timestamps = false;
 }

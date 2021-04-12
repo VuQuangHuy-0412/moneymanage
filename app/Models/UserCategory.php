@@ -15,5 +15,5 @@ class UserCategory extends Model
 
     protected $primaryKey = 'user_category_id';
 
-    public $timestamps = true;
+    public $timestamps = false;
 }

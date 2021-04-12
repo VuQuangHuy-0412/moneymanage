@@ -15,5 +15,5 @@ class UserFeedback extends Model
 
     protected $primaryKey = 'feedback_id';
 
-    public $timestamps = true;
+    public $timestamps = false;
 }

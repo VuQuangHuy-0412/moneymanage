@@ -15,5 +15,5 @@ class UserInformation extends Model
 
     protected $primaryKey = 'user_id';
 
-    public $timestamps = true;
+    public $timestamps = false;
 }

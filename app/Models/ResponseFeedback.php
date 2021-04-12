@@ -15,5 +15,5 @@ class ResponseFeedback extends Model
 
     protected $primaryKey = 'response_id';
 
-    public $timestamps = true;
+    public $timestamps = false;
 }
