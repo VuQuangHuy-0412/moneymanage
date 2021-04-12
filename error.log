@@ -1,0 +1,1 @@
+[Mon Apr 12 21:28:24.260338 2021] [php7:error] [pid 10284:tid 1916] [client 127.0.0.1:62965] PHP Fatal error:  Maximum execution time of 30 seconds exceeded in C:\\xampp\\htdocs\\moneymanage\\bootstrap\\cache\\services.php on line 2

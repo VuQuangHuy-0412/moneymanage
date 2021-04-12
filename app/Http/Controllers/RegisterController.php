@@ -14,6 +14,6 @@ class RegisterController extends BaseController
 
     public function register()
     {
-
+        return view('register');
     }
 }
