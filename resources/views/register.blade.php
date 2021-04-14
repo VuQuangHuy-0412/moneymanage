@@ -33,8 +33,8 @@
                             <div class="card-body">
                                 <form>
                                     <div class="form-group">
-                                        <label class="small mb-1" for="inputFirstName">Your Full Name</label>
-                                        <input class="form-control py-4" id="inputFirstName" type="text" placeholder="Enter your full name" />
+                                        <label class="small mb-1" for="inputFullName">Your Full Name</label>
+                                        <input class="form-control py-4" id="inputFullName" type="text" placeholder="Enter your full name" />
                                     </div>
                                     <div class="form-group">
                                         <label class="small mb-1" for="inputEmailAddress">Email</label>
