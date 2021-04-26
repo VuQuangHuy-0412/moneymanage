@@ -32,3 +32,10 @@ Route::post('/password/get_password', 'PasswordController@get_password')->name('
 //admin
 Route::get('/admin', 'Admin\AdminController@admin')->name('admin');
 
+//app
+Route::get('/home', 'App\HomeController@home')->name('app.home');
+Route::get('/about', function () {
+    return view('app.about');
+})->name('app.about');
+
+

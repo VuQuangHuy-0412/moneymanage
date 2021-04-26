@@ -49,6 +49,6 @@ class LoginController extends BaseController
             return redirect()->route('admin');
         }
 
-        return redirect()->route('login')->with('success', 'Đăng nhập thành công!');
+        return redirect()->route('app.home');
     }
 }
