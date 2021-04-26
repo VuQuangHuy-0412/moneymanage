@@ -14,8 +14,8 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('login');
-});
+    return view('landing_page.landing_page');
+})->name('landing_page');
 
 //register
 Route::get('/register', 'RegisterController@register')->name('register');
@@ -28,4 +28,7 @@ Route::post('/login/check', 'LoginController@check')->name('login.check');
 //password recovery
 Route::get('/password', 'PasswordController@password')->name('password');
 Route::post('/password/get_password', 'PasswordController@get_password')->name('password.get_password');
+
+//admin
+Route::get('/admin', 'Admin\AdminController@admin')->name('admin');
 

@@ -12,7 +12,7 @@
     <meta name="description" content="" />
     <meta name="author" content="" />
     <!--Title-->
-    <title>Register</title>
+    <title>Đăng Ký</title>
     <!--Styles-->
     <link href="{{asset('css/styles.css')}}" rel="stylesheet" type="text/css"/>
 
@@ -28,7 +28,7 @@
                     <div class="col-lg-7">
                         <div class="card shadow-lg border-0 rounded-lg mt-5">
                             <div class="card-header">
-                                <h3 class="text-center font-weight-light my-4">Create Account</h3>
+                                <h3 class="text-center font-weight-light my-4">Tạo  Tài Khoản</h3>
                             </div>
                             @include('elements.alert')
                             <div class="card-body">
@@ -36,7 +36,7 @@
                                     @csrf
                                     <div class="row">
                                         <div class="col-lg-3 col-md-3 col-sm-4 col-xs-5 form-control-label">
-                                            <label class="col-form-label" for="inputFullName">Your Full Name</label>
+                                            <label class="col-form-label" for="inputFullName">Họ và tên</label>
                                         </div>
                                         <div class="col-lg-9 col-md-9 col-sm-8 col-xs-7">
                                             <div class="form-group">
@@ -50,7 +50,7 @@
                                     </div>
                                     <div class="row">
                                         <div class="col-lg-3 col-md-3 col-sm-4 col-xs-5 form-control-label">
-                                            <label class="col-form-label" for="inputDateOfBirth">Your Date Of Birth</label>
+                                            <label class="col-form-label" for="inputDateOfBirth">Ngày sinh</label>
                                         </div>
                                         <div class="col-lg-9 col-md-9 col-sm-8 col-xs-7">
                                             <div class="form-group">
@@ -92,7 +92,7 @@
                                     </div>
                                     <div class="row">
                                         <div class="col-lg-3 col-md-3 col-sm-4 col-xs-5 form-control-label">
-                                            <label class="col-form-label" for="inputPassword">Password</label>
+                                            <label class="col-form-label" for="inputPassword">Mật khẩu</label>
                                         </div>
                                         <div class="col-lg-9 col-md-9 col-sm-8 col-xs-7">
                                             <div class="form-group">
@@ -105,7 +105,7 @@
                                     </div>
                                     <div class="row">
                                         <div class="col-lg-3 col-md-3 col-sm-4 col-xs-5 form-control-label">
-                                            <label class="col-form-label" for="inputConfirmPassword">Nhập lại password</label>
+                                            <label class="col-form-label" for="inputConfirmPassword">Nhập lại mật khẩu</label>
                                         </div>
                                         <div class="col-lg-9 col-md-9 col-sm-8 col-xs-7">
                                             <div class="form-group">
@@ -117,12 +117,12 @@
                                         </div>
                                     </div>
                                     <div class="form-group mt-4 mb-0">
-                                        <button type="submit" class="btn btn-primary btn-block">Create Account</button>
+                                        <button type="submit" class="btn btn-primary btn-block">Tạo Tài Khoản</button>
                                     </div>
                                 </form>
                             </div>
                             <div class="card-footer text-center">
-                                <div class="small"><a href={!! route('login') !!}>Have an account? Go to login</a></div>
+                                <div class="small"><a href={!! route('login') !!}>Có tài khoản rồi? Đăng nhập!</a></div>
                             </div>
                         </div>
                     </div>

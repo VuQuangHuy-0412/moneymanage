@@ -38,6 +38,17 @@ class LoginController extends BaseController
                 ->withInput();
         }
 
+        if (isset($__request["logInAsAdmin"]) && $__request["logInAsAdmin"] == 'yes') {
+            $admin = \App\Models\Admin::query()->where('email', $email)->first();
+
+            if (!isset($admin) || empty($admin)) {
+                return back()->withErrors('Tài khoản admin này không tồn tại.')
+                    ->withInput();
+            }
+
+            return redirect()->route('admin');
+        }
+
         return redirect()->route('login')->with('success', 'Đăng nhập thành công!');
     }
 }
