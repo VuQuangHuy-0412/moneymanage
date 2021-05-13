@@ -59,6 +59,6 @@ class LoginController extends BaseController
 
     public function logout() {
         \Illuminate\Support\Facades\Auth::logout();
-        return redirect()->back();
+        return redirect()->route('login');
     }
 }
