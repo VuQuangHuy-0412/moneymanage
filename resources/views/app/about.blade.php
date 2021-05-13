@@ -77,7 +77,7 @@
                         <a class="dropdown-item" href="#">Thông Tin Cá Nhân</a>
                         <a class="dropdown-item" href="#">Đổi Mật Khẩu</a>
                         <a class="dropdown-item" href="#">Khóa tài khoản</a>
-                        <a class="dropdown-item" href="{!! route('login') !!}">Đăng xuất</a>
+                        <a class="dropdown-item" href="{!! route('logout') !!}">Đăng xuất</a>
                     </div>
                 </li>
             </ul>
