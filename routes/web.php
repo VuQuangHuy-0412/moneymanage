@@ -40,5 +40,5 @@ Route::get('/home', 'App\HomeController@home')->name('app.home');
 Route::get('/about', function () {
     return view('app.about');
 })->name('app.about');
-
+Route::get('/info', 'App\UserController@info')->name('app.info');
 

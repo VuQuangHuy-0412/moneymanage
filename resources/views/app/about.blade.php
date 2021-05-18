@@ -74,7 +74,7 @@
                         Tài khoản
                     </a>
                     <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownPages">
-                        <a class="dropdown-item" href="#">Thông Tin Cá Nhân</a>
+                        <a class="dropdown-item" href="{!! route('app.info') !!}">Thông Tin Cá Nhân</a>
                         <a class="dropdown-item" href="#">Đổi Mật Khẩu</a>
                         <a class="dropdown-item" href="#">Khóa tài khoản</a>
                         <a class="dropdown-item" href="{!! route('logout') !!}">Đăng xuất</a>
