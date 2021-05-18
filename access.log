@@ -387,3 +387,13 @@
 127.0.0.1 - - [20/Apr/2021:10:11:14 +0700] "GET /js/scripts.js HTTP/1.1" 404 1552
 127.0.0.1 - - [20/Apr/2021:10:11:15 +0700] "GET /favicon.ico HTTP/1.1" 304 -
 >>>>>>> 307cad659a511f422eb10173c9c87e80539a6dd1
+127.0.0.1 - - [10/May/2021:12:39:04 +0700] "GET / HTTP/1.1" 500 505814
+127.0.0.1 - - [10/May/2021:13:52:13 +0700] "GET / HTTP/1.1" 200 6305
+127.0.0.1 - - [10/May/2021:13:52:35 +0700] "GET /css/business-frontpage.css HTTP/1.1" 200 286
+127.0.0.1 - - [10/May/2021:13:52:35 +0700] "GET /vendor/bootstrap/css/bootstrap.min.css HTTP/1.1" 200 160392
+127.0.0.1 - - [10/May/2021:13:52:35 +0700] "GET /image/luffy.jpg HTTP/1.1" 200 32798
+127.0.0.1 - - [10/May/2021:13:52:35 +0700] "GET /vendor/bootstrap/js/bootstrap.bundle.min.js HTTP/1.1" 200 84152
+127.0.0.1 - - [10/May/2021:13:52:35 +0700] "GET /vendor/jquery/jquery.min.js HTTP/1.1" 200 89476
+127.0.0.1 - - [10/May/2021:13:52:45 +0700] "GET /login HTTP/1.1" 200 6500
+127.0.0.1 - - [10/May/2021:13:52:46 +0700] "GET /css/styles.css HTTP/1.1" 200 187644
+127.0.0.1 - - [10/May/2021:13:52:46 +0700] "GET /js/scripts.js HTTP/1.1" 200 802
