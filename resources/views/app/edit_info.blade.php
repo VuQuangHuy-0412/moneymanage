@@ -130,67 +130,76 @@
             <div class="container-fluid">
                 <h1 class="mt-4">Cá Nhân</h1>
                 <ol class="breadcrumb mb-4">
-                    <li class="breadcrumb-item active">Thông Tin Cá Nhân</li>
+                    <li class="breadcrumb-item active">Sửa Thông Tin Cá Nhân</li>
                 </ol>
             </div>
             <div class="container-fluid">
                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                    <div class="ibox-content">
-                        <table class="table table-bordered">
-                        <tbody>
-
-                        <tr>
-                            <td class="col-sm-2">
-                                <label>Họ và tên</label>
-                            </td>
-                            <td>{!! $user->user_name !!}</td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <label>Ngày sinh</label>
-                            </td>
-                            <td>{!! date('d/m/Y', strtotime($user->date_of_birth)) !!}</td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <label>Email</label>
-                            </td>
-                            <td>{!! $user->email !!}</td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <label>Giới tính</label>
-                            </td>
-                            <td>
-                                @if($user->gender == 0)
-                                    <span>Nam</span>
-                                @else
-                                    <span>Nữ</span>
-                                @endif
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <label>Trạng thái</label>
-                            </td>
-                            <td>
-                                @if($user->active_user == 1)
-                                    <span class="text-success">Hoạt động</span>
-                                @else
-                                    <span class="text-warning">Không hoạt động</span>
-                                @endif
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <label>Ngày tham gia</label>
-                            </td>
-                            <td>
-                                {!! \App\Commons\Utility::displayDatetime($user->created_at) !!}
-                            </td>
-                        </tr>
-                        </tbody>
-                    </table>
+                    <div class="card-body">
+                        @include('elements.alert')
+                        <form method="POST" autocomplete="off" action="{!! route('app.info.store') !!}" class="form-horizontal" enctype="multipart/form-data">
+                            @csrf
+                            <div class="row">
+                                <div class="col-lg-3 col-md-3 col-sm-4 col-xs-5 form-control-label">
+                                    <label class="col-form-label" for="inputFullName">Họ và tên</label>
+                                </div>
+                                <div class="col-lg-9 col-md-9 col-sm-8 col-xs-7">
+                                    <div class="form-group">
+                                        <div class="form-line">
+                                            <input type="text" class="form-control py-4" name="user_name"
+                                                   placeholder="{!! $user->user_name !!}"
+                                                   maxlength="100"/>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-lg-3 col-md-3 col-sm-4 col-xs-5 form-control-label">
+                                    <label class="col-form-label" for="inputDateOfBirth">Ngày sinh</label>
+                                </div>
+                                <div class="col-lg-9 col-md-9 col-sm-8 col-xs-7">
+                                    <div class="form-group">
+                                        <div class="form-line">
+                                            <input type="date" class="form-control py-4" name="date_of_birth"
+                                                   placeholder="Enter your date of birth"
+                                                   value="{{$user->date_of_birth}}"/>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-lg-3 col-md-3 col-sm-4 col-xs-5 form-control-label">
+                                    <label class="form-label">Giới tính</label>
+                                </div>
+                                <div class="col-lg-9 col-md-9 col-sm-8 col-xs-7">
+                                    <div class="form-group">
+                                        <div class="form-line">
+                                            <select name="gender" id="gender" class="form-control">
+                                                <option value=2>Chọn giới tính</option>
+                                                <option {{$user->gender == 0?'selected':''}} value=0>Nam</option>
+                                                <option {{$user->gender == 1?'selected':''}}  value=1>Nữ</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-lg-3 col-md-3 col-sm-4 col-xs-5 form-control-label">
+                                    <label class="col-form-label" for="inputEmail">Email</label>
+                                </div>
+                                <div class="col-lg-9 col-md-9 col-sm-8 col-xs-7">
+                                    <div class="form-group">
+                                        <div class="form-line">
+                                            <input type="email" class="form-control py-4" name="email"
+                                                   placeholder="{!! $user->email !!}"/>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group mt-4 mb-0">
+                                <button type="submit" class="btn btn-primary btn-block">Cập Nhật Thông Tin</button>
+                            </div>
+                        </form>
                     </div>
                 </div>
             </div>

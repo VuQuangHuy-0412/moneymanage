@@ -41,4 +41,6 @@ Route::get('/about', function () {
     return view('app.about');
 })->name('app.about');
 Route::get('/info', 'App\UserController@info')->name('app.info');
+Route::get('/info/edit', 'App\UserController@edit_info')->name('app.info.edit');
+Route::post('/info/store', 'App\UserController@store_info')->name('app.info.store');
 
