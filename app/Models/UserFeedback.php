@@ -5,6 +5,11 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
+/**
+ * @property int $feedback_id
+ * @property int $user_id
+ * @property string $content
+ */
 class UserFeedback extends Model
 {
     protected $connection = 'mysql';

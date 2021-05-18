@@ -5,6 +5,12 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
+/**
+ * @property int $category_id
+ * @property string $name
+ * @property int $type
+ */
+
 class Category extends Model
 {
     protected $connection = 'mysql';

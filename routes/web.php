@@ -29,6 +29,9 @@ Route::post('/login/check', 'LoginController@check')->name('login.check');
 Route::get('/password', 'PasswordController@password')->name('password');
 Route::post('/password/get_password', 'PasswordController@get_password')->name('password.get_password');
 
+//logout
+Route::get('/logout', 'LoginController@logout')->name('logout');
+
 //admin
 Route::get('/admin', 'Admin\AdminController@admin')->name('admin');
 

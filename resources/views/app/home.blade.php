@@ -11,7 +11,7 @@
     <meta name="author" content="">
 
     <!--Title-->
-    <title>MoneyManage-Home</title>
+    <title>Home</title>
 
     <!-- Bootstrap core CSS -->
     <link href="{!! asset('vendorapp/bootstrap/css/bootstrap.min.css') !!}" rel="stylesheet">
@@ -77,7 +77,7 @@
                         <a class="dropdown-item" href="{!! route('app.info') !!}">Thông Tin Cá Nhân</a>
                         <a class="dropdown-item" href="#">Đổi Mật Khẩu</a>
                         <a class="dropdown-item" href="#">Khóa tài khoản</a>
-                        <a class="dropdown-item" href="{!! route('login') !!}">Đăng xuất</a>
+                        <a class="dropdown-item" href="{!! route('logout') !!}">Đăng xuất</a>
                     </div>
                 </li>
             </ul>
@@ -129,7 +129,7 @@
 <!-- Page Content -->
 <div class="container">
 
-    <h1 class="my-4">Chào mừng bạn đến với MoneyManage</h1>
+    <h1 class="my-4">Chào mừng bạn đến với MoneyManage, {{$logged->user_name}}</h1>
 
     <!-- Marketing Icons Section -->
     <div class="row">
