@@ -93,7 +93,7 @@
                 <div class="nav">
 
                     <div class="sb-sidenav-menu-heading">Cá Nhân</div>
-                    <a class="nav-link collapsed" href="{!! route('admin') !!}" data-toggle="collapse" data-target="#collapseDashboard" aria-expanded="false" aria-controls="collapseDashboard">
+                    <a class="nav-link collapsed" href="{!! route('app.info') !!}" data-toggle="collapse" data-target="#collapseDashboard" aria-expanded="false" aria-controls="collapseDashboard">
                         <div class="sb-nav-link-icon"><i class="fas fa-columns"></i></div>
                         Cá Nhân
                         <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
@@ -106,14 +106,14 @@
                     </div>
 
                     <div class="sb-sidenav-menu-heading">Tài Khoản</div>
-                    <a class="nav-link collapsed" href="{!! route('admin') !!}" data-toggle="collapse" data-target="#collapseUsers" aria-expanded="false" aria-controls="collapseUsers">
+                    <a class="nav-link collapsed" href="{!! route('app.info') !!}" data-toggle="collapse" data-target="#collapseUsers" aria-expanded="false" aria-controls="collapseUsers">
                         <div class="sb-nav-link-icon"><i class="fas fa-columns"></i></div>
                         Tài Khoản
                         <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
                     </a>
                     <div class="collapse" id="collapseUsers" aria-labelledby="headingOne" data-parent="#sidenavAccordion">
                         <nav class="sb-sidenav-menu-nested nav">
-                            <a class="nav-link" href="layout-static.html">Đổi Mật Khẩu</a>
+                            <a class="nav-link" href="{!! route('app.change-password') !!}">Đổi Mật Khẩu</a>
                             <a class="nav-link" href="layout-sidenav-light.html">Khóa Tài Khoản</a>
                         </nav>
                     </div>
@@ -150,6 +150,12 @@
                                 <label>Ngày sinh</label>
                             </td>
                             <td>{!! date('d/m/Y', strtotime($user->date_of_birth)) !!}</td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <label>Số điện thoại</label>
+                            </td>
+                            <td>{!! $user->phone !!}</td>
                         </tr>
                         <tr>
                             <td>

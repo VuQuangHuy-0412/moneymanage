@@ -59,6 +59,13 @@ class UserController extends BaseController
             $user->gender = $__request["gender"];
         }
 
+        if(!empty($__request["phone"])) {
+            if(strlen($__request["phone"]) == 10 || strlen($__request["phone"]) == 11) {
+                $user->phone = $__request["phone"];
+            }
+            else return redirect()->route('app.info.edit')->withErrors('Số điện thoại không hợp lệ!');
+        }
+
         if(!empty($__request["email"])) {
             $user->email = $__request["email"];
             $user_account->user_account = $__request["email"];
@@ -73,5 +80,56 @@ class UserController extends BaseController
         }
 
         return redirect()->route('app.info.edit')->withErrors('Có lỗi xảy ra!');
+    }
+
+    public function change_password() {
+        $logged = auth()->user();
+
+        if (!isset($logged) || empty($logged)) {
+            return redirect()->route('login');
+        }
+        $user_id = $logged->user_id;
+        $user = \App\Models\UserInformation::query()->where('user_id', $user_id)->first();
+
+        return view('app.change_password', compact('logged', 'user'));
+    }
+
+    public function save_password(Request $request) {
+        $logged = auth()->user();
+
+        if (!isset($logged) || empty($logged)) {
+            return redirect()->route('login');
+        }
+        $user_id = $logged->user_id;
+        $account = \App\Models\UserAccount::query()->where('user_id', $user_id)->first();
+
+        $__request = $request->all();
+        if (empty($__request["old_password"])) {
+            return redirect()->route('app.change-password')->withErrors('Bạn chưa nhập mật khẩu cũ!');
+        }
+
+        if ($__request["old_password"] != $account->password) {
+            return redirect()->route('app.change-password')->withErrors('Mật khẩu cũ bạn nhập chưa đúng!');
+        }
+
+        if (empty($__request["new_password"])) {
+            return redirect()->route('app.change-password')->withErrors('Bạn chưa nhập mật khẩu mới!');
+        }
+
+        if (empty($__request["renew_password"])) {
+            return redirect()->route('app.change-password')->withErrors('Bạn chưa nhập lại mật khẩu mới!');
+        }
+
+        if ($__request["new_password"] != $__request["renew_password"]) {
+            return redirect()->route('app.change-password')->withErrors('Mật khẩu nhập lại không khớp!');
+        }
+        $account->password = $__request["new_password"];
+        $insert_account = $account->save();
+
+        if ($insert_account) {
+            return redirect()->route('app.change-password')->with('success', 'Cập nhật mật khẩu thành công!');
+        }
+
+        return redirect()->route('app.change-password')->withErrors('Có lỗi xảy ra!');
     }
 }
