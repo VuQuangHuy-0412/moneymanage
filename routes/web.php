@@ -40,10 +40,15 @@ Route::get('/home', 'App\HomeController@home')->name('app.home');
 Route::get('/about', function () {
     return view('app.about');
 })->name('app.about');
+
 Route::get('/info', 'App\UserController@info')->name('app.info');
 Route::get('/info/edit', 'App\UserController@edit_info')->name('app.info.edit');
 Route::post('/info/store', 'App\UserController@store_info')->name('app.info.store');
+
 Route::get('/change-password', 'App\UserController@change_password')->name('app.change-password');
 Route::post('/save-password', 'App\UserController@save_password')->name('app.save-password');
+
 Route::get('/inactive-user', 'App\UserController@inactive_user')->name('app.inactive-user');
 Route::post('/inactive-user-store', 'App\UserController@inactive_user_store')->name('app.inactive-user-store');
+
+Route::get('/category', 'App\CategoryController@category')->name('app.category');

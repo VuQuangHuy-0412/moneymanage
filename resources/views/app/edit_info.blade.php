@@ -42,7 +42,7 @@
                     <a class="nav-link" href="{!! route('app.about') !!}">Giới Thiệu</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Danh Mục</a>
+                    <a class="nav-link" href="{!! route('app.category') !!}">Danh Mục</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="#">Hoạt động</a>
