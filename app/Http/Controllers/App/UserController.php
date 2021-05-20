@@ -132,4 +132,52 @@ class UserController extends BaseController
 
         return redirect()->route('app.change-password')->withErrors('Có lỗi xảy ra!');
     }
+
+    public function inactive_user() {
+        $logged = auth()->user();
+
+        if (!isset($logged) || empty($logged)) {
+            return redirect()->route('login');
+        }
+
+        return view('app.inactive_user', compact('logged'));
+    }
+
+    public function inactive_user_store(Request $request) {
+        $logged = auth()->user();
+
+        if (!isset($logged) || empty($logged)) {
+            return redirect()->route('login');
+        }
+        $user_id = $logged->user_id;
+        $user = \App\Models\UserInformation::query()->where('user_id', $user_id)->first();
+
+        $__request = $request->all();
+
+        if (empty($__request["reason"])) {
+            return redirect()->route('app.inactive-user')->withErrors('Hãy nhập nguyên nhân mà bạn muốn khóa tài khoản!');
+        }
+
+        if (!empty($__request["feedback"])) {
+            $feedback = new \App\Models\UserFeedback();
+            $feedback->user_id = $user_id;
+            $feedback->content = $__request["feedback"];
+
+            $insert_feedback = $feedback->save();
+            if (!$insert_feedback) {
+                return redirect()->route('app.inactive-user')->withErrors('Có lỗi xảy ra!');
+            }
+        }
+
+        if ($__request["lock"] == 1) {
+            $user->active_user = 0;
+            $insert_user = $user->save();
+            if (!$insert_feedback) {
+                return redirect()->route('app.inactive-user')->withErrors('Có lỗi xảy ra!');
+            }
+            else return redirect()->route('login')->with('success', 'Khóa tài khoản thành công');
+        }
+
+        return redirect()->route('app.home');
+    }
 }

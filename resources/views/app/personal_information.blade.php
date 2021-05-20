@@ -114,7 +114,7 @@
                     <div class="collapse" id="collapseUsers" aria-labelledby="headingOne" data-parent="#sidenavAccordion">
                         <nav class="sb-sidenav-menu-nested nav">
                             <a class="nav-link" href="{!! route('app.change-password') !!}">Đổi Mật Khẩu</a>
-                            <a class="nav-link" href="layout-sidenav-light.html">Khóa Tài Khoản</a>
+                            <a class="nav-link" href="{!! route('app.inactive-user') !!}">Khóa Tài Khoản</a>
                         </nav>
                     </div>
                 </div>

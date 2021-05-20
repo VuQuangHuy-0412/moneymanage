@@ -39,8 +39,12 @@ class LoginController extends BaseController
         }
 
 
-        $user = \App\Models\UserInformation::query()->where('email', $email)->where('active_user', 1)->first();
+        $user = \App\Models\UserInformation::query()->where('email', $email)->first();
 
+        if ($user->active_user == 0) {
+            return back()->withErrors('Tài khoản của bạn đã bị khóa!')
+                ->withInput();
+        }
         if (isset($__request["logInAsAdmin"]) && $__request["logInAsAdmin"] == 'yes') {
             $admin = $user;
             if (!isset($admin) || empty($admin)) {
