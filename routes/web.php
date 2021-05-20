@@ -52,3 +52,7 @@ Route::get('/inactive-user', 'App\UserController@inactive_user')->name('app.inac
 Route::post('/inactive-user-store', 'App\UserController@inactive_user_store')->name('app.inactive-user-store');
 
 Route::get('/category', 'App\CategoryController@category')->name('app.category');
+
+Route::get('/activity', 'App\ActivityController@activity')->name('app.activity');
+
+Route::get('/report', 'App\ReportController@report')->name('app.report');
