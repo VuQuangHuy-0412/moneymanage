@@ -11,7 +11,7 @@
     <meta name="author" content="">
 
     <!--Title-->
-    <title>MoneyManage-Change Password</title>
+    <title>Change Password</title>
 
     <!-- Bootstrap core CSS -->
     <link href="{!! asset('vendorapp/bootstrap/css/bootstrap.min.css') !!}" rel="stylesheet">
