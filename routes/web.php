@@ -52,6 +52,12 @@ Route::get('/inactive-user', 'App\UserController@inactive_user')->name('app.inac
 Route::post('/inactive-user-store', 'App\UserController@inactive_user_store')->name('app.inactive-user-store');
 
 Route::get('/category', 'App\CategoryController@category')->name('app.category');
+Route::get('/category-in', 'App\CategoryController@category_in')->name('app.category-in');
+Route::get('/add-category-in', 'App\CategoryController@add_category_in')->name('app.add-category-in');
+Route::get('/edit-category-in', 'App\CategoryController@edit_category_in')->name('app.edit-category-in');
+Route::get('/category-out', 'App\CategoryController@category_out')->name('app.category-out');
+Route::get('/add-category-out', 'App\CategoryController@add_category_out')->name('app.add-category-out');
+Route::get('/edit-category-out', 'App\CategoryController@edit_category_out')->name('app.edit-category-out');
 
 Route::get('/activity', 'App\ActivityController@activity')->name('app.activity');
 
