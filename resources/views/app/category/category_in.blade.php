@@ -11,11 +11,13 @@
     <meta name="author" content="">
 
     <!--Title-->
-    <title>Danh Mục</title>
+    <title>Danh Mục Thu</title>
 
     <!-- Bootstrap core CSS -->
     <link href="{!! asset('vendorapp/bootstrap/css/bootstrap.min.css') !!}" rel="stylesheet">
-    <link href="{{asset('css/styles.css')}}" rel="stylesheet" type="text/css"/>
+    <link href="{{asset('css/styles.css')}}" rel="stylesheet" type="text/css">
+    <link href="{!! asset('css/custom.css') !!}" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
     <link href="https://cdn.datatables.net/1.10.20/css/dataTables.bootstrap4.min.css" rel="stylesheet" crossorigin="anonymous" />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/js/all.min.js" crossorigin="anonymous"></script>
@@ -142,13 +144,56 @@
     <div id="layoutSidenav_content">
         <main>
             <div class="container-fluid">
-                <h1 class="mt-4">Danh Mục</h1>
+                <h1 class="mt-4">Danh Mục Thu</h1>
                 <ol class="breadcrumb mb-4">
                     <li class="breadcrumb-item active">Tất Cả Danh Mục</li>
                 </ol>
             </div>
             <div class="container-fluid">
-
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                                <div class="card-panel panel" id="tab1">
+                                    <div class="panel-heading" role="tab">
+                                        <h4 class="panel-title">
+                                            <a class="ptitle" role="button" data-toggle="collapse" href="#collapse_1">
+                                                Danh mục 1
+                                            </a>
+                                            <label role="button" data-toggle="collapse" href="#collapse_1">
+                                                <i class="material-icons">expand_more</i>
+                                            </label>
+                                        </h4>
+                                    </div>
+                                    <div id="collapse_1" class="panel-collapse collapse" role="tabpanel">
+                                        <div>
+                                            aaaaa
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                                <div class="card-panel panel" id="tab2">
+                                    <div class="panel-heading" role="tab">
+                                        <h4 class="panel-title">
+                                            <a class="ptitle" role="button" data-toggle="collapse" href="#collapse_2">
+                                                Danh mục 2
+                                            </a>
+                                            <label role="button" data-toggle="collapse" href="#collapse_2">
+                                                <i class="material-icons">expand_more</i>
+                                            </label>
+                                        </h4>
+                                    </div>
+                                    <div id="collapse_2" class="panel-collapse collapse" role="tabpanel">
+                                        <div>
+                                            aaaaa
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </main>
         <footer class="py-4 bg-light mt-auto">
