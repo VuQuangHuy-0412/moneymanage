@@ -153,44 +153,29 @@
                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                     <div class="card-body">
                         <div class="row">
+                            @foreach($datas as $d)
                             <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
                                 <div class="card-panel panel" id="tab1">
                                     <div class="panel-heading" role="tab">
                                         <h4 class="panel-title">
-                                            <a class="ptitle" role="button" data-toggle="collapse" href="#collapse_1">
-                                                Danh mục 1
+                                            <a class="ptitle" role="button" data-toggle="collapse" href="#collapse_{{$d->user_category_id}}">
+                                                {{$d->name}}
                                             </a>
-                                            <label role="button" data-toggle="collapse" href="#collapse_1">
+                                            <label role="button" data-toggle="collapse" href="#collapse_{{$d->user_category_id}}">
                                                 <i class="material-icons">expand_more</i>
                                             </label>
                                         </h4>
                                     </div>
-                                    <div id="collapse_1" class="panel-collapse collapse" role="tabpanel">
-                                        <div>
-                                            aaaaa
+                                    <div id="collapse_{{$d->user_category_id}}" class="panel-collapse collapse" role="tabpanel">
+                                        <div class="col-lg-9 col-md-9 col-sm-8 col-xs-7">
+                                            @if($d->describe == null) {{"Chưa có mô tả"}}
+                                            @else {{$d->describe}}
+                                            @endif
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
-                                <div class="card-panel panel" id="tab2">
-                                    <div class="panel-heading" role="tab">
-                                        <h4 class="panel-title">
-                                            <a class="ptitle" role="button" data-toggle="collapse" href="#collapse_2">
-                                                Danh mục 2
-                                            </a>
-                                            <label role="button" data-toggle="collapse" href="#collapse_2">
-                                                <i class="material-icons">expand_more</i>
-                                            </label>
-                                        </h4>
-                                    </div>
-                                    <div id="collapse_2" class="panel-collapse collapse" role="tabpanel">
-                                        <div>
-                                            aaaaa
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+                            @endforeach
                         </div>
                     </div>
                 </div>

@@ -56,9 +56,12 @@ Route::get('/category-in', 'App\CategoryController@category_in')->name('app.cate
 Route::get('/add-category-in', 'App\CategoryController@add_category_in')->name('app.add-category-in');
 Route::post('/store-category-in', 'App\CategoryController@store_category_in')->name('app.store-category-in');
 Route::get('/edit-category-in', 'App\CategoryController@edit_category_in')->name('app.edit-category-in');
+Route::post('/restore-category-in', 'App\CategoryController@restore_category_in')->name('app.restore-category-in');
 Route::get('/category-out', 'App\CategoryController@category_out')->name('app.category-out');
 Route::get('/add-category-out', 'App\CategoryController@add_category_out')->name('app.add-category-out');
+Route::post('/store-category-out', 'App\CategoryController@store_category_out')->name('app.store-category-out');
 Route::get('/edit-category-out', 'App\CategoryController@edit_category_out')->name('app.edit-category-out');
+Route::post('/restore-category-out', 'App\CategoryController@restore_category_out')->name('app.restore-category-out');
 
 Route::get('/activity', 'App\ActivityController@activity')->name('app.activity');
 

@@ -1,0 +1,1 @@
+[Sat Jun 05 23:27:53.632847 2021] [php7:error] [pid 6160:tid 1916] [client 127.0.0.1:50012] PHP Fatal error:  Maximum execution time of 30 seconds exceeded in C:\\xampp\\htdocs\\moneymanage\\vendor\\nesbot\\carbon\\src\\Carbon\\Traits\\ObjectInitialisation.php on line 13

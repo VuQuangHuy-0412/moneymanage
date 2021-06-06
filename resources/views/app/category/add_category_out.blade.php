@@ -11,7 +11,7 @@
     <meta name="author" content="">
 
     <!--Title-->
-    <title>Danh Mục</title>
+    <title>Thêm Danh Mục Chi</title>
 
     <!-- Bootstrap core CSS -->
     <link href="{!! asset('vendorapp/bootstrap/css/bootstrap.min.css') !!}" rel="stylesheet">
@@ -142,13 +142,50 @@
     <div id="layoutSidenav_content">
         <main>
             <div class="container-fluid">
-                <h1 class="mt-4">Danh Mục</h1>
+                <h1 class="mt-4">Danh Mục Chi</h1>
                 <ol class="breadcrumb mb-4">
-                    <li class="breadcrumb-item active">Tất Cả Danh Mục</li>
+                    <li class="breadcrumb-item active">Thêm Danh Mục Chi</li>
                 </ol>
             </div>
             <div class="container-fluid">
-
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                    <div class="card-body">
+                        @include('elements.alert')
+                        <form method="POST" autocomplete="off" action="{!! route('app.store-category-out') !!}" class="form-horizontal" enctype="multipart/form-data">
+                            @csrf
+                            <div class="row">
+                                <div class="col-lg-3 col-md-3 col-sm-4 col-xs-5 form-control-label">
+                                    <label class="col-form-label" for="inputCategoryName">Tên danh mục</label>
+                                </div>
+                                <div class="col-lg-9 col-md-9 col-sm-8 col-xs-7">
+                                    <div class="form-group">
+                                        <div class="form-line">
+                                            <input type="text" class="form-control py-4" name="category_name"
+                                                   placeholder="Tên danh mục"
+                                                   maxlength="100"/>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-lg-3 col-md-3 col-sm-4 col-xs-5 form-control-label">
+                                    <label class="col-form-label" for="inputDescribe">Mô tả</label>
+                                </div>
+                                <div class="col-lg-9 col-md-9 col-sm-8 col-xs-7">
+                                    <div class="form-group">
+                                        <div class="form-line">
+                                            <input type="text" class="form-control py-4" name="describe"
+                                                   placeholder="Mô tả chi tiết"/>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group mt-4 mb-0">
+                                <button type="submit" class="btn btn-primary btn-block">Thêm Danh Mục</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
             </div>
         </main>
         <footer class="py-4 bg-light mt-auto">

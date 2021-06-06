@@ -15,7 +15,9 @@
 
     <!-- Bootstrap core CSS -->
     <link href="{!! asset('vendorapp/bootstrap/css/bootstrap.min.css') !!}" rel="stylesheet">
-    <link href="{{asset('css/styles.css')}}" rel="stylesheet" type="text/css"/>
+    <link href="{{asset('css/styles.css')}}" rel="stylesheet" type="text/css">
+    <link href="{!! asset('css/custom.css') !!}" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
     <link href="https://cdn.datatables.net/1.10.20/css/dataTables.bootstrap4.min.css" rel="stylesheet" crossorigin="anonymous" />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/js/all.min.js" crossorigin="anonymous"></script>
@@ -148,7 +150,68 @@
                 </ol>
             </div>
             <div class="container-fluid">
-
+                <h4 class="mt-5">Danh mục thu</h4>
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                    <div class="card-body">
+                        <div class="row">
+                            @foreach($datas_in as $di)
+                                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                                    <div class="card-panel panel" id="tab1">
+                                        <div class="panel-heading" role="tab">
+                                            <h4 class="panel-title">
+                                                <a class="ptitle" role="button" data-toggle="collapse" href="#collapse_{{$di->user_category_id}}">
+                                                    {{$di->name}}
+                                                </a>
+                                                <label role="button" data-toggle="collapse" href="#collapse_{{$di->user_category_id}}">
+                                                    <i class="material-icons">expand_more</i>
+                                                </label>
+                                            </h4>
+                                        </div>
+                                        <div id="collapse_{{$di->user_category_id}}" class="panel-collapse collapse" role="tabpanel">
+                                            <div class="col-lg-9 col-md-9 col-sm-8 col-xs-7">
+                                                @if($di->describe == null) {{"Chưa có mô tả"}}
+                                                @else {{$di->describe}}
+                                                @endif
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            @endforeach
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="container-fluid">
+                <h4 class="mt-5">Danh mục chi</h4>
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                    <div class="card-body">
+                        <div class="row">
+                            @foreach($datas_out as $do)
+                                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                                    <div class="card-panel panel" id="tab1">
+                                        <div class="panel-heading" role="tab">
+                                            <h4 class="panel-title">
+                                                <a class="ptitle" role="button" data-toggle="collapse" href="#collapse_{{$do->user_category_id}}">
+                                                    {{$do->name}}
+                                                </a>
+                                                <label role="button" data-toggle="collapse" href="#collapse_{{$do->user_category_id}}">
+                                                    <i class="material-icons">expand_more</i>
+                                                </label>
+                                            </h4>
+                                        </div>
+                                        <div id="collapse_{{$do->user_category_id}}" class="panel-collapse collapse" role="tabpanel">
+                                            <div class="col-lg-9 col-md-9 col-sm-8 col-xs-7">
+                                                @if($do->describe == null) {{"Chưa có mô tả"}}
+                                                @else {{$do->describe}}
+                                                @endif
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            @endforeach
+                        </div>
+                    </div>
+                </div>
             </div>
         </main>
         <footer class="py-4 bg-light mt-auto">
