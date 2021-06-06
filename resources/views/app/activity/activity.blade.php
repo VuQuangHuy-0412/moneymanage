@@ -14,23 +14,16 @@
     <title>Hoạt Động</title>
 
     <!-- Bootstrap core CSS -->
-    <link href="{!! asset('css/calendar.css') !!}" rel="stylesheet">
     <link href="{!! asset('vendorapp/bootstrap/css/bootstrap.min.css') !!}" rel="stylesheet">
-    <link href="{{asset('css/styles.css')}}" rel="stylesheet" type="text/css">
     <link href="{!! asset('css/custom.css') !!}" rel="stylesheet" type="text/css">
+
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <link
-        rel="stylesheet"
-        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css"
-    />
-    <link
-        href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&display=swap"
-        rel="stylesheet"
-    />
     <link href="https://cdn.datatables.net/1.10.20/css/dataTables.bootstrap4.min.css" rel="stylesheet" crossorigin="anonymous" />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/js/all.min.js" crossorigin="anonymous"></script>
+
     <!-- Custom styles for this template -->
     <link href="{!! asset('css/modern-business.css') !!}" rel="stylesheet">
+    <link href="{{asset('css/styles.css')}}" rel="stylesheet" type="text/css">
 
 </head>
 
@@ -163,33 +156,11 @@
             <div class="container-fluid">
                 <h1 class="mt-4">Hoạt Động</h1>
                 <ol class="breadcrumb mb-4">
-                    <li class="breadcrumb-item active">Thống Kê Hoạt Động</li>
+                    <li class="breadcrumb-item active">Tất Cả Hoạt Động</li>
                 </ol>
             </div>
             <div class="container-fluid">
-                <div class="container">
-                    <div class="calendar">
-                        <div class="month">
-                            <i class="fas fa-angle-left prev" id="prev"></i>
-                            <div class="date">
-                                <h4></h4>
-                                <p></p>
-                            </div>
-                            <i class="fas fa-angle-right next"></i>
-                        </div>
-                        <div class="weekdays">
-                            <div>Sun</div>
-                            <div>Mon</div>
-                            <div>Tue</div>
-                            <div>Wed</div>
-                            <div>Thu</div>
-                            <div>Fri</div>
-                            <div>Sat</div>
-                        </div>
-                        <div class="days"></div>
-                    </div>
-                </div>
-                <script src="js/calendar.js"></script>
+
             </div>
         </main>
         <footer class="py-4 bg-light mt-auto">
