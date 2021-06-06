@@ -64,5 +64,10 @@ Route::get('/edit-category-out', 'App\CategoryController@edit_category_out')->na
 Route::post('/restore-category-out', 'App\CategoryController@restore_category_out')->name('app.restore-category-out');
 
 Route::get('/activity', 'App\ActivityController@activity')->name('app.activity');
+Route::get('/all-activity', 'App\ActivityController@all_activity')->name('app.all-activity');
+Route::get('/activity-today', 'App\ActivityController@activity_today')->name('app.activity-today');
+Route::get('/activity-month', 'App\ActivityController@activity_month')->name('app.activity-month');
+Route::get('/add-activity', 'App\ActivityController@add_activity')->name('app.add-activity');
+Route::get('/edit-activity', 'App\ActivityController@edit_activity')->name('app.edit-activity');
 
 Route::get('/report', 'App\ReportController@report')->name('app.report');

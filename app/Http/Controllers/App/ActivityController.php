@@ -22,4 +22,34 @@ class ActivityController extends BaseController
 
         return view('app.activity.activity', compact('logged'));
     }
+
+    public function all_activity() {
+        $logged = auth()->user();
+
+        if (!isset($logged) || empty($logged)) {
+            return redirect()->route('login');
+        }
+
+        return view('app.activity.activity', compact('logged'));
+    }
+
+    public function activity_today() {
+        $logged = auth()->user();
+
+        if (!isset($logged) || empty($logged)) {
+            return redirect()->route('login');
+        }
+
+        return view('app.activity.activity', compact('logged'));
+    }
+
+    public function activity_month() {
+        $logged = auth()->user();
+
+        if (!isset($logged) || empty($logged)) {
+            return redirect()->route('login');
+        }
+
+        return view('app.activity.activity', compact('logged'));
+    }
 }

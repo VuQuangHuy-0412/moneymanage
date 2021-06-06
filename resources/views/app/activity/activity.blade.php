@@ -14,9 +14,19 @@
     <title>Hoạt Động</title>
 
     <!-- Bootstrap core CSS -->
+    <link href="{!! asset('css/calendar.css') !!}" rel="stylesheet">
     <link href="{!! asset('vendorapp/bootstrap/css/bootstrap.min.css') !!}" rel="stylesheet">
-    <link href="{{asset('css/styles.css')}}" rel="stylesheet" type="text/css"/>
-
+    <link href="{{asset('css/styles.css')}}" rel="stylesheet" type="text/css">
+    <link href="{!! asset('css/custom.css') !!}" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css"
+    />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet"
+    />
     <link href="https://cdn.datatables.net/1.10.20/css/dataTables.bootstrap4.min.css" rel="stylesheet" crossorigin="anonymous" />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/js/all.min.js" crossorigin="anonymous"></script>
     <!-- Custom styles for this template -->
@@ -92,31 +102,54 @@
             <div class="sb-sidenav-menu">
                 <div class="nav">
 
-                    <div class="sb-sidenav-menu-heading">Cá Nhân</div>
-                    <a class="nav-link collapsed" href="{!! route('app.info') !!}" data-toggle="collapse" data-target="#collapseDashboard" aria-expanded="false" aria-controls="collapseDashboard">
+                    <div class="sb-sidenav-menu-heading">Hoạt Động</div>
+                    <a class="nav-link collapsed" href="{!! route('app.activity') !!}" data-toggle="collapse" data-target="#collapseDashboard" aria-expanded="false" aria-controls="collapseDashboard">
                         <div class="sb-nav-link-icon"><i class="fas fa-columns"></i></div>
-                        Cá Nhân
+                        Hoạt Động
                         <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
                     </a>
                     <div class="collapse" id="collapseDashboard" aria-labelledby="headingOne" data-parent="#sidenavAccordion">
                         <nav class="sb-sidenav-menu-nested nav">
-                            <a class="nav-link" href="{!! route('app.info') !!}">Thông Tin Cá Nhân</a>
-                            <a class="nav-link" href="{!! route('app.info.edit') !!}">Sửa Thông Tin Cá Nhân</a>
+                            <a class="nav-link" href="{!! route('app.all-activity') !!}">Thống Kê Hoạt Động</a>
+                        </nav>
+                    </div>
+                    <div class="collapse" id="collapseDashboard" aria-labelledby="headingOne" data-parent="#sidenavAccordion">
+                        <nav class="sb-sidenav-menu-nested nav">
+                            <a class="nav-link" href="{!! route('app.activity-today') !!}">Hoạt Động Hôm Nay</a>
+                        </nav>
+                    </div>
+                    <div class="collapse" id="collapseDashboard" aria-labelledby="headingOne" data-parent="#sidenavAccordion">
+                        <nav class="sb-sidenav-menu-nested nav">
+                            <a class="nav-link" href="{!! route('app.activity-month') !!}">Hoạt Động Trong Tháng</a>
                         </nav>
                     </div>
 
-                    <div class="sb-sidenav-menu-heading">Tài Khoản</div>
-                    <a class="nav-link collapsed" href="{!! route('app.info') !!}" data-toggle="collapse" data-target="#collapseUsers" aria-expanded="false" aria-controls="collapseUsers">
+                    <div class="sb-sidenav-menu-heading">Chỉnh Sửa</div>
+                    <a class="nav-link collapsed" href="{!! route('app.activity') !!}" data-toggle="collapse" data-target="#collapseIn" aria-expanded="false" aria-controls="collapseIn">
                         <div class="sb-nav-link-icon"><i class="fas fa-columns"></i></div>
-                        Tài Khoản
+                        Chỉnh Sửa
                         <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
                     </a>
-                    <div class="collapse" id="collapseUsers" aria-labelledby="headingOne" data-parent="#sidenavAccordion">
+                    <div class="collapse" id="collapseIn" aria-labelledby="headingOne" data-parent="#sidenavAccordion">
                         <nav class="sb-sidenav-menu-nested nav">
-                            <a class="nav-link" href="{!! route('app.change-password') !!}">Đổi Mật Khẩu</a>
-                            <a class="nav-link" href="{!! route('app.inactive-user') !!}">Khóa Tài Khoản</a>
+                            <a class="nav-link" href="{!! route('app.add-activity') !!}">Thêm Hoạt Động</a>
+                            <a class="nav-link" href="{!! route('app.edit-activity') !!}">Chỉnh Sửa Hoạt Động</a>
                         </nav>
                     </div>
+
+{{--                    <div class="sb-sidenav-menu-heading">Danh Mục Chi</div>--}}
+{{--                    <a class="nav-link collapsed" href="{!! route('app.category-out') !!}" data-toggle="collapse" data-target="#collapseOut" aria-expanded="false" aria-controls="collapseOut">--}}
+{{--                        <div class="sb-nav-link-icon"><i class="fas fa-columns"></i></div>--}}
+{{--                        Danh Mục Chi--}}
+{{--                        <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>--}}
+{{--                    </a>--}}
+{{--                    <div class="collapse" id="collapseOut" aria-labelledby="headingOne" data-parent="#sidenavAccordion">--}}
+{{--                        <nav class="sb-sidenav-menu-nested nav">--}}
+{{--                            <a class="nav-link" href="{!! route('app.category-out') !!}">Xem Tất Cả Danh Mục Chi</a>--}}
+{{--                            <a class="nav-link" href="{!! route('app.add-category-out') !!}">Thêm Danh Mục Chi</a>--}}
+{{--                            <a class="nav-link" href="{!! route('app.edit-category-out') !!}">Sửa Danh Mục Chi</a>--}}
+{{--                        </nav>--}}
+{{--                    </div>--}}
                 </div>
             </div>
             <div class="sb-sidenav-footer">
@@ -128,13 +161,35 @@
     <div id="layoutSidenav_content">
         <main>
             <div class="container-fluid">
-                <h1 class="mt-4">Cá Nhân</h1>
+                <h1 class="mt-4">Hoạt Động</h1>
                 <ol class="breadcrumb mb-4">
-                    <li class="breadcrumb-item active">Thông Tin Cá Nhân</li>
+                    <li class="breadcrumb-item active">Thống Kê Hoạt Động</li>
                 </ol>
             </div>
             <div class="container-fluid">
-
+                <div class="container">
+                    <div class="calendar">
+                        <div class="month">
+                            <i class="fas fa-angle-left prev" id="prev"></i>
+                            <div class="date">
+                                <h4></h4>
+                                <p></p>
+                            </div>
+                            <i class="fas fa-angle-right next"></i>
+                        </div>
+                        <div class="weekdays">
+                            <div>Sun</div>
+                            <div>Mon</div>
+                            <div>Tue</div>
+                            <div>Wed</div>
+                            <div>Thu</div>
+                            <div>Fri</div>
+                            <div>Sat</div>
+                        </div>
+                        <div class="days"></div>
+                    </div>
+                </div>
+                <script src="js/calendar.js"></script>
             </div>
         </main>
         <footer class="py-4 bg-light mt-auto">
@@ -160,4 +215,5 @@
 <script src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js" crossorigin="anonymous"></script>
 <script src="https://cdn.datatables.net/1.10.20/js/dataTables.bootstrap4.min.js" crossorigin="anonymous"></script>
 <script src="assets/demo/datatables-demo.js"></script>
+
 </body>
