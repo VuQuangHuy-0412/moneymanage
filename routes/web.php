@@ -68,6 +68,7 @@ Route::get('/all-activity', 'App\ActivityController@all_activity')->name('app.al
 Route::get('/activity-today', 'App\ActivityController@activity_today')->name('app.activity-today');
 Route::get('/activity-month', 'App\ActivityController@activity_month')->name('app.activity-month');
 Route::get('/add-activity', 'App\ActivityController@add_activity')->name('app.add-activity');
+Route::post('/store-activity', 'App\ActivityController@store_activity')->name('app.store-activity');
 Route::get('/edit-activity', 'App\ActivityController@edit_activity')->name('app.edit-activity');
 
 Route::get('/report', 'App\ReportController@report')->name('app.report');

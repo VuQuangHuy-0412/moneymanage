@@ -4,6 +4,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\DB;
 
 /**
  * @property int $category_id
@@ -22,4 +23,12 @@ class Category extends Model
     protected $primaryKey = 'category_id';
 
     public $timestamps = false;
+
+    public function get_name_by_id($category_id) {
+        $query = DB::table('category')
+            ->where('category_id', $category_id)
+            ->first();
+
+        return $query;
+    }
 }

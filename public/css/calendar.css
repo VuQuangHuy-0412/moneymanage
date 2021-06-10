@@ -8136,7 +8136,7 @@ body {
   line-height: 1.8;
   font-weight: normal;
   background: #f8f9fd;
-  color: gray; }
+  color: #b3d7ff; }
 
 a {
   -webkit-transition: .3s all ease;
@@ -8152,7 +8152,7 @@ a {
 h1, h2, h3, h4, h5,
 .h1, .h2, .h3, .h4, .h5 {
   line-height: 1.5;
-  font-weight: 400;
+  font-weight: 500;
   color: #000; }
 
 .bg-primary {
@@ -8245,7 +8245,7 @@ h1, h2, h3, h4, h5,
   margin: 0 auto;
   height: 100%;
   width: 50%;
-  background: #fff;
+  background: #b3d7ff;
   font: 13px Helvetica, Arial, san-serif;
   display: inline-block;
   padding: 20px;
@@ -8267,7 +8267,7 @@ h1, h2, h3, h4, h5,
 
 /* Calendar Header */
 .year-header {
-  background: #fff;
+  background: #b3d7ff;
   height: 40px;
   text-align: center;
   position: relative;
@@ -8286,7 +8286,7 @@ h1, h2, h3, h4, h5,
   width: 28px;
   text-align: center;
   position: absolute;
-  color: #cccccc !important;
+  color: #004085 !important;
   -webkit-transition: 0.3s;
   -o-transition: 0.3s;
   transition: 0.3s;
@@ -8373,7 +8373,7 @@ h1, h2, h3, h4, h5,
   line-height: 26px;
   text-transform: uppercase;
   font-size: 11px;
-  color: #cccccc;
+  color: #007bff;
   -webkit-transition: all 250ms;
   -o-transition: all 250ms;
   transition: all 250ms; }
@@ -8435,7 +8435,7 @@ h1, h2, h3, h4, h5,
 /* input dialog */
 .dialog {
   z-index: 5;
-  background: #000;
+  background: #155724;
   position: absolute;
   width: 50%;
   height: 500px;

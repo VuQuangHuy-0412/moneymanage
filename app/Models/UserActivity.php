@@ -11,6 +11,8 @@ use Illuminate\Database\Eloquent\Model;
  * @property int $category_id
  * @property int $money_amount
  * @property string $describe
+ * @property string $date
+ * @property string $name
  */
 
 class UserActivity extends Model

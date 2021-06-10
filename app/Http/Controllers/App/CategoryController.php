@@ -49,7 +49,7 @@ class CategoryController extends BaseController
                     ->join('user_category', 'category.category_id', '=', 'user_category.category_id')
                     ->where('user_category.user_id', $id)
                     ->where('category.type', 0)
-                    ->select('category.name', 'user_category.describe', 'user_category.user_category_id');
+                    ->select('category.name', 'user_category.describe', 'user_category.user_category_id', 'category.category_id');
 
         $result = $query->get();
 
@@ -185,7 +185,7 @@ class CategoryController extends BaseController
             ->join('user_category', 'category.category_id', '=', 'user_category.category_id')
             ->where('user_category.user_id', $id)
             ->where('category.type', 1)
-            ->select('category.name', 'user_category.describe', 'user_category.user_category_id');
+            ->select('category.name', 'user_category.describe', 'user_category.user_category_id', 'category.category_id');
 
         $result = $query->get();
 
