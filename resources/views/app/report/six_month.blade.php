@@ -11,7 +11,7 @@
     <meta name="author" content="">
 
     <!--Title-->
-    <title>Báo Cáo</title>
+    <title>Báo Cáo Sáu Tháng Gần Nhất</title>
 
     <!-- Bootstrap core CSS -->
     <link href="{!! asset('vendorapp/bootstrap/css/bootstrap.min.css') !!}" rel="stylesheet">
@@ -152,9 +152,9 @@
     <div id="layoutSidenav_content">
         <main>
             <div class="container-fluid">
-                <h1 class="mt-4">Cá Nhân</h1>
+                <h1 class="mt-4">Báo Cáo</h1>
                 <ol class="breadcrumb mb-4">
-                    <li class="breadcrumb-item active">Thông Tin Cá Nhân</li>
+                    <li class="breadcrumb-item active">Báo Cáo Sáu Tháng Gần Nhất</li>
                 </ol>
             </div>
             <div class="container-fluid">

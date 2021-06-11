@@ -154,7 +154,7 @@
             <div class="container-fluid">
                 <h1 class="mt-4">Báo cáo</h1>
                 <ol class="breadcrumb mb-4">
-                    <li class="breadcrumb-item active">Báo cáo tổng quát</li>
+                    <li class="breadcrumb-item active">Báo Cáo Tổng Quát</li>
                 </ol>
             </div>
             <div class="container-fluid">
