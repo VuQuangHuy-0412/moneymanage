@@ -227,7 +227,7 @@
                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                     <div class="ibox-content">
                         <table class="table table-bordered">
-                            <tr>
+                            <thead>
                             <tr>
                                 <th>Tên hoạt động</th>
                                 <th>Danh mục</th>
@@ -235,7 +235,12 @@
                                 <th>Số tiền (đồng)</th>
                                 <th>Mô tả</th>
                             </tr>
-                            @if(!isset($activities) || empty($activities)) Chưa có hoạt động nào trong ngày {{$date}}!
+                            </thead>
+                            <tbody>
+                            @if(!isset($activities) || empty($activities))
+                                <tr>
+                                    <td class="text-center" colspan="5">Chưa có hoạt động nào trong hôm nay!</td>
+                                </tr>
                             @else
                                 @foreach($activities as $a)
                                     <tr>
@@ -249,9 +254,9 @@
                                         <td>{{number_format($a->money_amount, 0, ",", ".")}}</td>
                                         <td>{{$a->describe}}</td>
                                     </tr>
-                                    @endforeach
-                                    @endif
-                                    </tbody>
+                                @endforeach
+                            @endif
+                            </tbody>
                         </table>
                     </div>
                 </div>

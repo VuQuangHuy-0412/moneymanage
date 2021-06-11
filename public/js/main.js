@@ -213,7 +213,7 @@ function show_events_from_db() {
     $.ajax({
         url: '/get-data-activity',
         data: {
-            user_id:1,
+            user_id: 1,
             date:'2021-06-10'
         },
         type: 'post',

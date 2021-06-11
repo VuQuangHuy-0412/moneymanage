@@ -164,7 +164,9 @@
                             <div class="card-body">Tổng số tiền đã chi trong tháng</div>
                             <div class="card-footer d-flex align-items-center justify-content-between">
                                 @if(!isset($datas[0]->tien_chi) || empty($datas[0]->tien_chi)) 0 đồng
-                                @else {{number_format($datas[0]->tien_chi, 0, ",", ".")}} đồng
+                                @else
+                                    {{number_format($datas[0]->tien_chi, 0, ",", ".")}} đồng
+                                    <input type="hidden" id="tien_thu" value="{{$datas[0]->tien_thu}}">
                                 @endif
                             </div>
                         </div>
@@ -174,7 +176,9 @@
                             <div class="card-body">Tổng số tiền đã thu trong tháng</div>
                             <div class="card-footer d-flex align-items-center justify-content-between">
                                 @if(!isset($datas[0]->tien_thu) || empty($datas[0]->tien_thu)) 0 đồng
-                                @else {{number_format($datas[0]->tien_thu, 0, ",", ".")}} đồng
+                                @else
+                                    {{number_format($datas[0]->tien_thu, 0, ",", ".")}} đồng
+                                    <input type="hidden" id="tien_thu" value="{{$datas[0]->tien_thu}}">
                                 @endif
                             </div>
                         </div>

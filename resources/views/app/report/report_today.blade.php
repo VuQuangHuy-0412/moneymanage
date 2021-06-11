@@ -164,7 +164,9 @@
                             <div class="card-body">Tổng số tiền đã chi trong ngày</div>
                             <div class="card-footer d-flex align-items-center justify-content-between">
                                 @if(!isset($datas[0]->tien_chi) || empty($datas[0]->tien_chi)) 0 đồng
-                                @else {{number_format($datas[0]->tien_chi, 0, ",", ".")}} đồng
+                                @else
+                                    {{number_format($datas[0]->tien_chi, 0, ",", ".")}} đồng
+                                    <input type="hidden" id="tien_chi" value="{{$datas[0]->tien_chi}}">
                                 @endif
                             </div>
                         </div>
@@ -174,14 +176,16 @@
                             <div class="card-body">Tổng số tiền đã thu trong ngày</div>
                             <div class="card-footer d-flex align-items-center justify-content-between">
                                 @if(!isset($datas[0]->tien_thu) || empty($datas[0]->tien_thu)) 0 đồng
-                                @else {{number_format($datas[0]->tien_thu, 0, ",", ".")}} đồng
+                                @else
+                                    {{number_format($datas[0]->tien_thu, 0, ",", ".")}} đồng
+                                    <input type="hidden" id="tien_thu" value="{{$datas[0]->tien_thu}}">
                                 @endif
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-            <div class="container-fluid">
+            <div class="container-fluid mb-4">
                 <h4>Tương quan thu chi trong ngày</h4>
                 <div class="col-xl-6">
                     @if(!isset($datas) || empty($datas)) Chưa có hoạt động nào trong hôm nay!
@@ -197,7 +201,7 @@
                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                     <div class="ibox-content">
                         <table class="table table-bordered">
-                            <tr>
+                            <thead>
                             <tr>
                                 <th>Tên hoạt động</th>
                                 <th>Danh mục</th>
@@ -205,21 +209,26 @@
                                 <th>Số tiền (đồng)</th>
                                 <th>Mô tả</th>
                             </tr>
-                            @if(!isset($activities) || empty($activities)) Chưa có hoạt động nào trong hôm nay!
-                            @else
-                            @foreach($activities as $a)
+                            </thead>
+                            <tbody>
+                            @if(!isset($activities) || empty($activities))
                                 <tr>
-                                    <td>{{$a->name}}</td>
-                                    <td>{{$a->ten_danh_muc}}</td>
-                                    <td>
-                                        @if($a->type == 0) Thu
-                                        @else Chi
-                                        @endif
-                                    </td>
-                                    <td>{{number_format($a->money_amount, 0, ",", ".")}}</td>
-                                    <td>{{$a->describe}}</td>
+                                    <td class="text-center" colspan="5">Chưa có hoạt động nào trong hôm nay!</td>
                                 </tr>
-                            @endforeach
+                            @else
+                                @foreach($activities as $a)
+                                    <tr>
+                                        <td>{{$a->name}}</td>
+                                        <td>{{$a->ten_danh_muc}}</td>
+                                        <td>
+                                            @if($a->type == 0) Thu
+                                            @else Chi
+                                            @endif
+                                        </td>
+                                        <td>{{number_format($a->money_amount, 0, ",", ".")}}</td>
+                                        <td>{{$a->describe}}</td>
+                                    </tr>
+                                @endforeach
                             @endif
                             </tbody>
                         </table>

@@ -3,37 +3,32 @@ Chart.defaults.global.defaultFontFamily = '-apple-system,system-ui,BlinkMacSyste
 Chart.defaults.global.defaultFontColor = '#292b2c';
 
 // Bar Chart Example
-function get_amount_today() {
-    $.ajax({
-        url: '/get-amount-today',
-        data: {
-            tien_thu: 0,
-            tien_chi: 0,
-        },
-        type: 'post',
-        cache: true,
-        success: function (response) {
-            alert("ok")
-        },
-        error: function (e) {
-            alert("Có lỗi trong quá trình xử lý");
-        }
-    });
-}
-
 var ctx = document.getElementById("myBarChart");
+var tien_thu = $("#tien_thu").val();
+var tien_chi = $("#tien_chi").val();
+
 var myLineChart = new Chart(ctx, {
   type: 'bar',
   data: {
     labels: ["Tổng thu", "Tổng chi"],
     datasets: [{
-      label: "Revenue",
       backgroundColor: "rgba(2,117,216,1)",
       borderColor: "rgba(2,117,216,1)",
-      data: [4215, 5312],
+      data: [tien_thu, tien_chi],
     }],
   },
   options: {
+      // tooltips: {
+      //     enabled: true,
+      //     callbacks: {
+      //         label: function (tooltipItem, chartData) {
+      //             return Sv.numberToString(chartData.datasets[tooltipItem.datasetIndex].data[tooltipItem.index]);
+      //         }
+      //     },
+      //     show: {
+      //         duration: 500
+      //     }
+      // },
     scales: {
       xAxes: [{
         time: {
@@ -49,8 +44,7 @@ var myLineChart = new Chart(ctx, {
       yAxes: [{
         ticks: {
           min: 0,
-          max: 15000,
-          maxTicksLimit: 5
+          maxTicksLimit: 10
         },
         gridLines: {
           display: true
