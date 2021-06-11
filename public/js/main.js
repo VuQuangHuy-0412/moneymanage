@@ -211,10 +211,13 @@ function show_events(events, month, day) {
 
 function show_events_from_db() {
     $.ajax({
+        headers: {
+            'X-CSRF-TOKEN': $('meta[name=csrf-token]').attr('content')
+        },
         url: '/get-data-activity',
         data: {
             user_id: 1,
-            date:'2021-06-10'
+            date: '2021-06-10'
         },
         type: 'post',
         cache: true,
