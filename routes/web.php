@@ -77,3 +77,9 @@ Route::post('/get-data-activity', 'App\ActivityController@get_data_activity')->n
 Route::get('/edit-activity', 'App\ActivityController@edit_activity')->name('app.edit-activity');
 
 Route::get('/report', 'App\ReportController@report')->name('app.report');
+Route::get('/report-today', 'App\ReportController@report_today')->name('app.report-today');
+Route::get('/report-this-month', 'App\ReportController@report_this_month')->name('app.report-this-month');
+Route::get('/date-detail', 'App\ReportController@date_detail')->name('app.date-detail');
+Route::get('/seven-date', 'App\ReportController@seven_date')->name('app.seven-date');
+Route::get('/month-detail', 'App\ReportController@month_detail')->name('app.month-detail');
+Route::get('/six-month', 'App\ReportController@six_month')->name('app.six-month');
