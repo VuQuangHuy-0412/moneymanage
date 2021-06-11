@@ -78,6 +78,7 @@ Route::get('/edit-activity', 'App\ActivityController@edit_activity')->name('app.
 
 Route::get('/report', 'App\ReportController@report')->name('app.report');
 Route::get('/report-today', 'App\ReportController@report_today')->name('app.report-today');
+Route::post('/get-amount-today', 'App\ReportController@get_amount_today')->name('app.get-amount-today');
 Route::get('/report-this-month', 'App\ReportController@report_this_month')->name('app.report-this-month');
 Route::get('/date-detail', 'App\ReportController@date_detail')->name('app.date-detail');
 Route::get('/seven-date', 'App\ReportController@seven_date')->name('app.seven-date');
