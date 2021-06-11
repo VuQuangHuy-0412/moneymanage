@@ -81,7 +81,8 @@ function date_click(event) {
     $("#dialog").hide(250);
     $(".active-date").removeClass("active-date");
     $(this).addClass("active-date");
-    show_events(event.data.events, event.data.month, event.data.day);
+    // show_events(event.data.events, event.data.month, event.data.day);
+    show_events_from_db();
 };
 
 // Event handler for when a month is clicked
@@ -134,6 +135,7 @@ function new_event(event) {
     // Event handler for ok button
     $("#ok-button").unbind().click({date: event.data.date}, function() {
         var date = event.data.date;
+        var name = $("#name").val().trim();
         var category_type = parseInt($("#category_type").val().trim());
         var category_id = parseInt($("#category_id").val().trim());
         var money_amount = parseInt($("#money_amount").val().trim());
@@ -150,6 +152,9 @@ function new_event(event) {
         else if(money_amount === 0) {
             $("#money_amount").addClass("error-input");
         }
+        else if(name == null) {
+            $("#name").addClass("error-input");
+        }
         else {
             date.setDate(day);
             var date_format = date.toLocaleDateString("en-US");
@@ -157,7 +162,7 @@ function new_event(event) {
             $('form#form').submit();
             $("#dialog").hide(250);
             console.log("new event");
-            new_event_json(category_type, category_id, money_amount, describe, date, day);
+            new_event_json(name, category_type, category_id, money_amount, describe, date, day);
             date.setDate(day);
             init_calendar(date);
         }
@@ -165,8 +170,9 @@ function new_event(event) {
 }
 
 // Adds a json event to event_data
-function new_event_json(category_type, category_id, money_amount, describe, date, day) {
+function new_event_json(name, category_type, category_id, money_amount, describe, date, day) {
     var event = {
+        "name": name,
         "category_type": category_type,
         "category_name": category_id,
         "money_amount": money_amount,
@@ -186,7 +192,7 @@ function show_events(events, month, day) {
     // If there are no events for this date, notify the user
     if(events.length===0) {
         var event_card = $("<div class='event-card'></div>");
-        var event_name = $("<div class='event-name'>Chưa có hoạt động nào trong "+month+" "+day+".</div>");
+        var event_name = $("<div class='event-name' style='color: black'>Chưa có hoạt động nào trong "+month+" "+day+".</div>");
         $(event_card).css({ "border-left": "10px solid #FF1744" });
         $(event_card).append(event_name);
         $(".events-container").append(event_card);
@@ -195,18 +201,30 @@ function show_events(events, month, day) {
         // Go through and add each event as a card to the events container
         for(var i=0; i<events.length; i++) {
             var event_card = $("<div class='event-card'></div>");
-            var event_name = $("<div class='event-name'>"+events[i]["category_name"]+":</div>");
-            var event_count = $("<div class='event-count'>"+events[i]["category_type"]+"</div>");
-            if(events[i]["cancelled"]===true) {
-                $(event_card).css({
-                    "border-left": "10px solid #FF1744"
-                });
-                event_count = $("<div class='event-cancelled'>Cancelled</div>");
-            }
+            var event_name = $("<div class='event-name'>"+events[i]["name"]+":</div>");
+            var event_count = $("<div class='event-count'>"+events[i]["money_amount"]+"</div>");
             $(event_card).append(event_name).append(event_count);
             $(".events-container").append(event_card);
         }
     }
+}
+
+function show_events_from_db() {
+    $.ajax({
+        url: '/get-data-activity',
+        data: {
+            user_id:1,
+            date:'2021-06-10'
+        },
+        type: 'post',
+        cache: true,
+        success: function (response) {
+            alert("ok")
+        },
+        error: function (e) {
+            alert("Có lỗi trong quá trình xử lý");
+        }
+    });
 }
 
 // Checks if a specific date has any events
@@ -226,89 +244,6 @@ function check_events(day, month, year) {
 // Given data for events in JSON format
 var event_data = {
     "events": [
-    {
-        "occasion": " Repeated Test Event ",
-        "invited_count": 120,
-        "year": 2020,
-        "month": 5,
-        "day": 10,
-        "cancelled": true
-    },
-    {
-        "occasion": " Repeated Test Event ",
-        "invited_count": 120,
-        "year": 2020,
-        "month": 5,
-        "day": 10,
-        "cancelled": true
-    },
-        {
-        "occasion": " Repeated Test Event ",
-        "invited_count": 120,
-        "year": 2020,
-        "month": 5,
-        "day": 10,
-        "cancelled": true
-    },
-    {
-        "occasion": " Repeated Test Event ",
-        "invited_count": 120,
-        "year": 2020,
-        "month": 5,
-        "day": 10
-    },
-        {
-        "occasion": " Repeated Test Event ",
-        "invited_count": 120,
-        "year": 2020,
-        "month": 5,
-        "day": 10,
-        "cancelled": true
-    },
-    {
-        "occasion": " Repeated Test Event ",
-        "invited_count": 120,
-        "year": 2020,
-        "month": 5,
-        "day": 10
-    },
-        {
-        "occasion": " Repeated Test Event ",
-        "invited_count": 120,
-        "year": 2020,
-        "month": 5,
-        "day": 10,
-        "cancelled": true
-    },
-    {
-        "occasion": " Repeated Test Event ",
-        "invited_count": 120,
-        "year": 2020,
-        "month": 5,
-        "day": 10
-    },
-        {
-        "occasion": " Repeated Test Event ",
-        "invited_count": 120,
-        "year": 2020,
-        "month": 5,
-        "day": 10,
-        "cancelled": true
-    },
-    {
-        "occasion": " Repeated Test Event ",
-        "invited_count": 120,
-        "year": 2020,
-        "month": 5,
-        "day": 10
-    },
-    {
-        "occasion": " Test Event",
-        "invited_count": 120,
-        "year": 2020,
-        "month": 5,
-        "day": 11
-    }
     ]
 };
 

@@ -51,6 +51,10 @@ Route::post('/save-password', 'App\UserController@save_password')->name('app.sav
 Route::get('/inactive-user', 'App\UserController@inactive_user')->name('app.inactive-user');
 Route::post('/inactive-user-store', 'App\UserController@inactive_user_store')->name('app.inactive-user-store');
 
+Route::get('/feedback', 'App\UserController@feedback')->name('app.feedback');
+Route::get('/add_feedback', 'App\UserController@add_feedback')->name('app.add-feedback');
+Route::post('/store-feedback', 'App\UserController@store_feedback')->name('app.store-feedback');
+
 Route::get('/category', 'App\CategoryController@category')->name('app.category');
 Route::get('/category-in', 'App\CategoryController@category_in')->name('app.category-in');
 Route::get('/add-category-in', 'App\CategoryController@add_category_in')->name('app.add-category-in');
@@ -69,6 +73,7 @@ Route::get('/activity-today', 'App\ActivityController@activity_today')->name('ap
 Route::get('/activity-month', 'App\ActivityController@activity_month')->name('app.activity-month');
 Route::get('/add-activity', 'App\ActivityController@add_activity')->name('app.add-activity');
 Route::post('/store-activity', 'App\ActivityController@store_activity')->name('app.store-activity');
+Route::post('/get-data-activity', 'App\ActivityController@get_data_activity')->name('app.get-data-activity');
 Route::get('/edit-activity', 'App\ActivityController@edit_activity')->name('app.edit-activity');
 
 Route::get('/report', 'App\ReportController@report')->name('app.report');

@@ -63,9 +63,21 @@ class ActivityController extends BaseController
         }
 
         $user_id = $logged->user_id;
+
         $datas = $this->get_data_category($user_id);
 
         return view('app.activity.add_activity', compact('logged', 'datas'));
+    }
+
+    public function get_data_activity(Request $request) {
+        var_dump($request->get('user_id'));
+        var_dump($request->get('date'));
+        die();
+        $query = DB::table('user_activity')
+            ->where('user_id')
+            ->get();
+
+        return $query;
     }
 
     public function store_activity(Request $request) {

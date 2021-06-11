@@ -3,11 +3,13 @@
 
 namespace App\Http\Controllers\App;
 
+use App\Models\UserFeedback;
 use Illuminate\Http\Request;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Foundation\Bus\DispatchesJobs;
 use Illuminate\Foundation\Validation\ValidatesRequests;
 use Illuminate\Routing\Controller as BaseController;
+use Illuminate\Support\Facades\DB;
 
 class UserController extends BaseController
 {
@@ -179,5 +181,65 @@ class UserController extends BaseController
         }
 
         return redirect()->route('app.home');
+    }
+
+    public function feedback() {
+        $logged = auth()->user();
+
+        if (!isset($logged) || empty($logged)) {
+            return redirect()->route('login');
+        }
+
+        $user_id = $logged->user_id;
+        $datas = $this->get_data_feedback($user_id);
+
+        return view('app.feedback', compact('logged', 'datas'));
+    }
+
+    public function get_data_feedback($id) {
+        $query = DB::table('user_feedback')
+            ->where('user_id', $id)
+            ->orderBy('created_at', 'desc')
+            ->select('content', 'created_at');
+
+        $results = $query->get();
+        return $results;
+    }
+
+    public function add_feedback() {
+        $logged = auth()->user();
+
+        if (!isset($logged) || empty($logged)) {
+            return redirect()->route('login');
+        }
+
+        return view('app.add_feedback', compact('logged'));
+    }
+
+    public function store_feedback(Request $request) {
+        $logged = auth()->user();
+
+        if (!isset($logged) || empty($logged)) {
+            return redirect()->route('login');
+        }
+
+        $user_id = $logged->user_id;
+
+        $__request = $request->all();
+
+        if(!isset($__request["content"]) || empty($__request["content"])) {
+            return redirect()->route('app.add-feedback')->withErrors('Bạn chưa nhập nội dung!');
+        }
+
+        $user_feedback = new UserFeedback();
+        $user_feedback->user_id = $user_id;
+        $user_feedback->content = $__request["content"];
+
+        $insert_feedback = $user_feedback->save();
+        if (!$insert_feedback) {
+            return redirect()->route('app.add-feedback')->withErrors('Có lỗi xảy ra!');
+        }
+
+        return redirect()->route('app.add-feedback')->with('success', 'Cảm ơn bạn đã góp ý!');
     }
 }

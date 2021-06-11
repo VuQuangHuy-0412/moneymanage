@@ -117,6 +117,19 @@
                             <a class="nav-link" href="{!! route('app.inactive-user') !!}">Khóa Tài Khoản</a>
                         </nav>
                     </div>
+
+                    <div class="sb-sidenav-menu-heading">Góp Ý</div>
+                    <a class="nav-link collapsed" href="{!! route('app.info') !!}" data-toggle="collapse" data-target="#collapseFeedback" aria-expanded="false" aria-controls="collapseUsers">
+                        <div class="sb-nav-link-icon"><i class="fas fa-columns"></i></div>
+                        Góp Ý
+                        <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
+                    </a>
+                    <div class="collapse" id="collapseFeedback" aria-labelledby="headingOne" data-parent="#sidenavAccordion">
+                        <nav class="sb-sidenav-menu-nested nav">
+                            <a class="nav-link" href="{!! route('app.feedback') !!}">Danh sách đã góp ý</a>
+                            <a class="nav-link" href="{!! route('app.add-feedback') !!}">Thêm góp ý</a>
+                        </nav>
+                    </div>
                 </div>
             </div>
             <div class="sb-sidenav-footer">

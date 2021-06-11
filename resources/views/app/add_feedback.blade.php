@@ -11,7 +11,7 @@
     <meta name="author" content="">
 
     <!--Title-->
-    <title>Sửa Thông Tin</title>
+    <title>Thêm Góp Ý</title>
 
     <!-- Bootstrap core CSS -->
     <link href="{!! asset('vendorapp/bootstrap/css/bootstrap.min.css') !!}" rel="stylesheet">
@@ -141,89 +141,32 @@
     <div id="layoutSidenav_content">
         <main>
             <div class="container-fluid">
-                <h1 class="mt-4">Cá Nhân</h1>
+                <h1 class="mt-4">Góp Ý</h1>
                 <ol class="breadcrumb mb-4">
-                    <li class="breadcrumb-item active">Sửa Thông Tin Cá Nhân</li>
+                    <li class="breadcrumb-item active">Thêm Góp Ý</li>
                 </ol>
             </div>
             <div class="container-fluid">
                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                     <div class="card-body">
                         @include('elements.alert')
-                        <form method="POST" autocomplete="off" action="{!! route('app.info.store') !!}" class="form-horizontal" enctype="multipart/form-data">
+                        <form method="POST" autocomplete="off" action="{!! route('app.store-feedback') !!}" class="form-horizontal" enctype="multipart/form-data">
                             @csrf
                             <div class="row">
                                 <div class="col-lg-3 col-md-3 col-sm-4 col-xs-5 form-control-label">
-                                    <label class="col-form-label" for="inputFullName">Họ và tên</label>
+                                    <label class="col-form-label" for="content">Nội dung góp ý</label>
                                 </div>
                                 <div class="col-lg-9 col-md-9 col-sm-8 col-xs-7">
                                     <div class="form-group">
                                         <div class="form-line">
-                                            <input type="text" class="form-control py-4" name="user_name"
-                                                   placeholder="{!! $user->user_name !!}"
-                                                   maxlength="100"/>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-lg-3 col-md-3 col-sm-4 col-xs-5 form-control-label">
-                                    <label class="col-form-label" for="inputDateOfBirth">Ngày sinh</label>
-                                </div>
-                                <div class="col-lg-9 col-md-9 col-sm-8 col-xs-7">
-                                    <div class="form-group">
-                                        <div class="form-line">
-                                            <input type="date" class="form-control py-4" name="date_of_birth"
-                                                   placeholder="Enter your date of birth"
-                                                   value="{{$user->date_of_birth}}"/>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-lg-3 col-md-3 col-sm-4 col-xs-5 form-control-label">
-                                    <label class="form-label">Giới tính</label>
-                                </div>
-                                <div class="col-lg-9 col-md-9 col-sm-8 col-xs-7">
-                                    <div class="form-group">
-                                        <div class="form-line">
-                                            <select name="gender" id="gender" class="form-control">
-                                                <option value=2>Chọn giới tính</option>
-                                                <option {{$user->gender == 0?'selected':''}} value=0>Nam</option>
-                                                <option {{$user->gender == 1?'selected':''}}  value=1>Nữ</option>
-                                            </select>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-lg-3 col-md-3 col-sm-4 col-xs-5 form-control-label">
-                                    <label class="col-form-label" for="inputEmail">Email</label>
-                                </div>
-                                <div class="col-lg-9 col-md-9 col-sm-8 col-xs-7">
-                                    <div class="form-group">
-                                        <div class="form-line">
-                                            <input type="email" class="form-control py-4" name="email"
-                                                   placeholder="{!! $user->email !!}"/>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-lg-3 col-md-3 col-sm-4 col-xs-5 form-control-label">
-                                    <label class="col-form-label" for="inputPhone">Số điện thoại</label>
-                                </div>
-                                <div class="col-lg-9 col-md-9 col-sm-8 col-xs-7">
-                                    <div class="form-group">
-                                        <div class="form-line">
-                                            <input type="text" class="form-control py-4" name="phone"
-                                                   placeholder="{!! $user->phone !!}"/>
+                                            <input type="text" class="form-control py-4" name="content"
+                                                   placeholder="Nhập nội dung bạn muốn góp ý!"/>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                             <div class="form-group mt-4 mb-0">
-                                <button type="submit" class="btn btn-primary btn-block">Cập Nhật Thông Tin</button>
+                                <button type="submit" class="btn btn-primary btn-block">Góp Ý</button>
                             </div>
                         </form>
                     </div>
