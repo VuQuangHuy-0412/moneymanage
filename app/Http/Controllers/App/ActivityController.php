@@ -15,7 +15,8 @@ class ActivityController extends BaseController
 {
     use AuthorizesRequests, DispatchesJobs, ValidatesRequests;
 
-    public function activity() {
+    public function activity()
+    {
         $logged = auth()->user();
 
         if (!isset($logged) || empty($logged)) {
@@ -25,7 +26,8 @@ class ActivityController extends BaseController
         return view('app.activity.activity', compact('logged'));
     }
 
-    public function all_activity() {
+    public function all_activity()
+    {
         $logged = auth()->user();
 
         if (!isset($logged) || empty($logged)) {
@@ -35,7 +37,8 @@ class ActivityController extends BaseController
         return view('app.activity.activity', compact('logged'));
     }
 
-    public function activity_today() {
+    public function activity_today()
+    {
         $logged = auth()->user();
 
         if (!isset($logged) || empty($logged)) {
@@ -45,7 +48,8 @@ class ActivityController extends BaseController
         return view('app.activity.activity', compact('logged'));
     }
 
-    public function activity_month() {
+    public function activity_month()
+    {
         $logged = auth()->user();
 
         if (!isset($logged) || empty($logged)) {
@@ -55,7 +59,22 @@ class ActivityController extends BaseController
         return view('app.activity.activity', compact('logged'));
     }
 
-    public function add_activity() {
+    public function add_activity(Request $request)
+    {
+        $logged = auth()->user();
+
+        if (!isset($logged) || empty($logged)) {
+            return redirect()->route('login');
+        }
+
+        $user_id = $logged->user_id;
+        $datas = $this->get_data_category($user_id);
+
+        return view('app.activity.add_activity', compact('logged', 'datas'));
+    }
+
+    public function get_data_activity(Request $request)
+    {
         $logged = auth()->user();
 
         if (!isset($logged) || empty($logged)) {
@@ -64,23 +83,19 @@ class ActivityController extends BaseController
 
         $user_id = $logged->user_id;
 
-        $datas = $this->get_data_category($user_id);
-
-        return view('app.activity.add_activity', compact('logged', 'datas'));
-    }
-
-    public function get_data_activity(Request $request) {
-        var_dump($request->get('user_id'));
-        var_dump($request->get('date'));
-        die();
-        $query = DB::table('user_activity')
-            ->where('user_id')
+        $__request = $request->all();
+        $data = DB::table('user_activity')
+            ->join('category', 'category.category_id', '=', 'user_activity.category_id')
+            ->where('user_activity.user_id', $user_id)
+            ->where('user_activity.date', $__request["date"])
+            ->select('user_activity.name', 'user_activity.money_amount', 'category.type', 'category.name as ten_danh_muc', 'user_activity.describe')
             ->get();
 
-        return $query;
+        return $data;
     }
 
-    public function store_activity(Request $request) {
+    public function store_activity(Request $request)
+    {
         $logged = auth()->user();
 
         if (!isset($logged) || empty($logged)) {
@@ -105,7 +120,8 @@ class ActivityController extends BaseController
         return redirect()->route('app.add-activity')->with('success', 'Thêm hoạt động thành công!');
     }
 
-    public function get_data_category($id) {
+    public function get_data_category($id)
+    {
         $query = DB::table('category')
             ->join('user_category', 'category.category_id', '=', 'user_category.category_id')
             ->where('user_category.user_id', $id)
@@ -116,7 +132,8 @@ class ActivityController extends BaseController
         return $result;
     }
 
-    public function edit_activity() {
+    public function edit_activity()
+    {
         $logged = auth()->user();
 
         if (!isset($logged) || empty($logged)) {

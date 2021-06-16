@@ -307,6 +307,26 @@
                     </div>
                 </div>
             </div>
+            <div class="container-fluid">
+                <h4>Danh sách các hoạt động trong ngày</h4>
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                    <div class="ibox-content">
+                        <table class="table table-bordered" id="table">
+                            <thead>
+                            <tr>
+                                <th>Tên hoạt động</th>
+                                <th>Danh mục</th>
+                                <th>Loại danh mục</th>
+                                <th>Số tiền (đồng)</th>
+                                <th>Mô tả</th>
+                            </tr>
+                            </thead>
+                            <tbody id="tbody_activities">
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
         </main>
         <footer class="py-4 bg-light mt-auto">
             <div class="container-fluid">
