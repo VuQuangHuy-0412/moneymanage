@@ -8179,16 +8179,16 @@ h1, h2, h3, h4, h5,
 .content {
   overflow: none;
   width: 100%;
-  max-width: 790px;
+  max-width: 1000px !important;
   padding: 0px 0;
   height: 500px;
   position: relative;
-  margin: 20px auto;
+  margin: 20px 20px 20px 300px;
   background: #7e0cf5; }
 
 /*  Events display */
 .events-container {
-  overflow-y: scroll;
+  /*overflow-y: scroll;*/
   height: 100%;
   width: 50%;
   float: right;

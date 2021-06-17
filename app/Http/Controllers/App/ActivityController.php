@@ -34,7 +34,44 @@ class ActivityController extends BaseController
             return redirect()->route('login');
         }
 
-        return view('app.activity.activity', compact('logged'));
+        $user_id = $logged->user_id;
+
+        $activities = $this->get_all_activity();
+
+        $query = "
+            SELECT
+                COUNT(if(c.`type` = 0, ua.activity_id, null)) so_hoat_dong_thu,
+                COUNT(if(c.`type` = 1, ua.activity_id, null)) so_hoat_dong_chi,
+                SUM(if(c.`type` = 0, ua.money_amount, 0)) tong_thu,
+                SUM(if(c.`type` = 1, ua.money_amount, 0)) tong_chi
+            FROM money_manage.user_activity ua
+            JOIN money_manage.category c ON ua.category_id = c.category_id
+            WHERE ua.user_id = $user_id;
+        ";
+
+        $data = DB::select($query);
+
+        return view('app.activity.activity', compact('logged', 'activities', 'data'));
+    }
+
+    public function get_all_activity()
+    {
+        $logged = auth()->user();
+
+        if (!isset($logged) || empty($logged)) {
+            return redirect()->route('login');
+        }
+
+        $user_id = $logged->user_id;
+
+        $query = DB::table('user_activity')
+            ->join('category', 'user_activity.category_id', '=', 'category.category_id')
+            ->where('user_activity.user_id', $user_id)
+            ->select('user_activity.name', 'user_activity.money_amount', 'category.type', 'category.name as ten_danh_muc', 'user_activity.describe', 'user_activity.date')
+            ->orderBy('user_activity.activity_id', 'desc')
+            ->get();
+
+        return $query;
     }
 
     public function activity_today()
@@ -45,7 +82,7 @@ class ActivityController extends BaseController
             return redirect()->route('login');
         }
 
-        return view('app.activity.activity', compact('logged'));
+        return view('app.activity.activity_today', compact('logged'));
     }
 
     public function activity_month()
@@ -140,6 +177,6 @@ class ActivityController extends BaseController
             return redirect()->route('login');
         }
 
-        return view('app.activity.activity', compact('logged'));
+        return view('app.activity.edit_activity', compact('logged'));
     }
 }

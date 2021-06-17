@@ -12,7 +12,7 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
     <!--Title-->
-    <title>Hoạt Động</title>
+    <title>Hoạt Động Tháng Này</title>
 
     <!-- Bootstrap core CSS -->
     <link href="{!! asset('vendorapp/bootstrap/css/bootstrap.min.css') !!}" rel="stylesheet">
@@ -135,19 +135,19 @@
                         </nav>
                     </div>
 
-{{--                    <div class="sb-sidenav-menu-heading">Danh Mục Chi</div>--}}
-{{--                    <a class="nav-link collapsed" href="{!! route('app.category-out') !!}" data-toggle="collapse" data-target="#collapseOut" aria-expanded="false" aria-controls="collapseOut">--}}
-{{--                        <div class="sb-nav-link-icon"><i class="fas fa-columns"></i></div>--}}
-{{--                        Danh Mục Chi--}}
-{{--                        <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>--}}
-{{--                    </a>--}}
-{{--                    <div class="collapse" id="collapseOut" aria-labelledby="headingOne" data-parent="#sidenavAccordion">--}}
-{{--                        <nav class="sb-sidenav-menu-nested nav">--}}
-{{--                            <a class="nav-link" href="{!! route('app.category-out') !!}">Xem Tất Cả Danh Mục Chi</a>--}}
-{{--                            <a class="nav-link" href="{!! route('app.add-category-out') !!}">Thêm Danh Mục Chi</a>--}}
-{{--                            <a class="nav-link" href="{!! route('app.edit-category-out') !!}">Sửa Danh Mục Chi</a>--}}
-{{--                        </nav>--}}
-{{--                    </div>--}}
+                    {{--                    <div class="sb-sidenav-menu-heading">Danh Mục Chi</div>--}}
+                    {{--                    <a class="nav-link collapsed" href="{!! route('app.category-out') !!}" data-toggle="collapse" data-target="#collapseOut" aria-expanded="false" aria-controls="collapseOut">--}}
+                    {{--                        <div class="sb-nav-link-icon"><i class="fas fa-columns"></i></div>--}}
+                    {{--                        Danh Mục Chi--}}
+                    {{--                        <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>--}}
+                    {{--                    </a>--}}
+                    {{--                    <div class="collapse" id="collapseOut" aria-labelledby="headingOne" data-parent="#sidenavAccordion">--}}
+                    {{--                        <nav class="sb-sidenav-menu-nested nav">--}}
+                    {{--                            <a class="nav-link" href="{!! route('app.category-out') !!}">Xem Tất Cả Danh Mục Chi</a>--}}
+                    {{--                            <a class="nav-link" href="{!! route('app.add-category-out') !!}">Thêm Danh Mục Chi</a>--}}
+                    {{--                            <a class="nav-link" href="{!! route('app.edit-category-out') !!}">Sửa Danh Mục Chi</a>--}}
+                    {{--                        </nav>--}}
+                    {{--                    </div>--}}
                 </div>
             </div>
             <div class="sb-sidenav-footer">
@@ -161,122 +161,75 @@
             <div class="container-fluid">
                 <h1 class="mt-4">Hoạt Động</h1>
                 <ol class="breadcrumb mb-4">
-                    <li class="breadcrumb-item active">Tất Cả Hoạt Động</li>
+                    <li class="breadcrumb-item active">Hoạt Động Tháng Này</li>
                 </ol>
             </div>
-{{--            <div class="row">--}}
-{{--                <div class="col-md-12">--}}
-{{--                    <div class="content w-100">--}}
-{{--                        <div class="calendar-container">--}}
-{{--                            <div class="calendar">--}}
-{{--                                <div class="year-header">--}}
-{{--                                    <span class="left-button fa fa-chevron-left" id="prev"> </span>--}}
-{{--                                    <span class="year" id="label"></span>--}}
-{{--                                    <span class="right-button fa fa-chevron-right" id="next"> </span>--}}
-{{--                                </div>--}}
-{{--                                <table class="months-table w-100">--}}
-{{--                                    <tbody>--}}
-{{--                                    <tr class="months-row">--}}
-{{--                                        <td class="month">Jan</td>--}}
-{{--                                        <td class="month">Feb</td>--}}
-{{--                                        <td class="month">Mar</td>--}}
-{{--                                        <td class="month">Apr</td>--}}
-{{--                                        <td class="month">May</td>--}}
-{{--                                        <td class="month">Jun</td>--}}
-{{--                                        <td class="month">Jul</td>--}}
-{{--                                        <td class="month">Aug</td>--}}
-{{--                                        <td class="month">Sep</td>--}}
-{{--                                        <td class="month">Oct</td>--}}
-{{--                                        <td class="month">Nov</td>--}}
-{{--                                        <td class="month">Dec</td>--}}
-{{--                                    </tr>--}}
-{{--                                    </tbody>--}}
-{{--                                </table>--}}
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="content w-100">
+                        <div class="calendar-container">
+                            <div class="calendar">
+                                <div class="year-header">
+                                    <span class="left-button fa fa-chevron-left" id="prev"> </span>
+                                    <span class="year" id="label"></span>
+                                    <span class="right-button fa fa-chevron-right" id="next"> </span>
+                                </div>
+                                <table class="months-table w-100">
+                                    <tbody>
+                                    <tr class="months-row">
+                                        <td class="month">Jan</td>
+                                        <td class="month">Feb</td>
+                                        <td class="month">Mar</td>
+                                        <td class="month">Apr</td>
+                                        <td class="month">May</td>
+                                        <td class="month">Jun</td>
+                                        <td class="month">Jul</td>
+                                        <td class="month">Aug</td>
+                                        <td class="month">Sep</td>
+                                        <td class="month">Oct</td>
+                                        <td class="month">Nov</td>
+                                        <td class="month">Dec</td>
+                                    </tr>
+                                    </tbody>
+                                </table>
 
-{{--                                <table class="days-table w-100">--}}
-{{--                                    <td class="day">Sun</td>--}}
-{{--                                    <td class="day">Mon</td>--}}
-{{--                                    <td class="day">Tue</td>--}}
-{{--                                    <td class="day">Wed</td>--}}
-{{--                                    <td class="day">Thu</td>--}}
-{{--                                    <td class="day">Fri</td>--}}
-{{--                                    <td class="day">Sat</td>--}}
-{{--                                </table>--}}
-{{--                                <div class="frame">--}}
-{{--                                    <table class="dates-table w-100">--}}
-{{--                                        <tbody class="tbody">--}}
-{{--                                        </tbody>--}}
-{{--                                    </table>--}}
-{{--                                </div>--}}
-{{--                            </div>--}}
-{{--                        </div>--}}
-{{--                        <div class="events-container">--}}
-{{--                        </div>--}}
-{{--                    </div>--}}
-{{--                </div>--}}
-{{--            </div>--}}
-            <div class="container-fluid">
-                <div class="row">
-                    <div class="col-xl-6 col-md-12">
-                        <div class="card bg-primary text-white mb-4">
-                            <div class="card-body">Tổng chi</div>
-                            <div class="card-footer d-flex align-items-center justify-content-between">
-                                @if(!isset($data[0]->so_hoat_dong_chi) || empty($data[0]->so_hoat_dong_chi)) 0 hoạt động - 0 đồng
-                                @else
-                                    {{number_format($data[0]->so_hoat_dong_chi, 0, ",", ".")}} hoạt động - {{number_format($data[0]->tong_chi, 0, ",", ".")}} đồng
-                                @endif
+                                <table class="days-table w-100">
+                                    <td class="day">Sun</td>
+                                    <td class="day">Mon</td>
+                                    <td class="day">Tue</td>
+                                    <td class="day">Wed</td>
+                                    <td class="day">Thu</td>
+                                    <td class="day">Fri</td>
+                                    <td class="day">Sat</td>
+                                </table>
+                                <div class="frame">
+                                    <table class="dates-table w-100">
+                                        <tbody class="tbody">
+                                        </tbody>
+                                    </table>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="col-xl-6 col-md-12">
-                        <div class="card bg-primary text-white mb-4">
-                            <div class="card-body">Tổng thu</div>
-                            <div class="card-footer d-flex align-items-center justify-content-between">
-                                @if(!isset($data[0]->so_hoat_dong_thu) || empty($data[0]->so_hoat_dong_thu)) 0 hoạt động - 0 đồng
-                                @else
-                                    {{number_format($data[0]->so_hoat_dong_thu, 0, ",", ".")}} hoạt động - {{number_format($data[0]->tong_thu, 0, ",", ".")}} đồng
-                                @endif
-                            </div>
+                        <div class="events-container">
                         </div>
                     </div>
                 </div>
             </div>
             <div class="container-fluid">
-                <h4>Danh sách lịch sử các hoạt động</h4>
+                <h4>Danh sách các hoạt động trong ngày</h4>
                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                     <div class="ibox-content">
-                        <table class="table table-bordered">
+                        <table class="table table-bordered" id="table">
                             <thead>
                             <tr>
                                 <th>Tên hoạt động</th>
                                 <th>Danh mục</th>
                                 <th>Loại danh mục</th>
                                 <th>Số tiền (đồng)</th>
-                                <th>Ngày</th>
                                 <th>Mô tả</th>
                             </tr>
                             </thead>
-                            <tbody>
-                            @if(!isset($activities) || empty($activities))
-                                <tr>
-                                    <td class="text-center" colspan="5">Chưa có hoạt động nào trong hôm nay!</td>
-                                </tr>
-                            @else
-                                @foreach($activities as $a)
-                                    <tr>
-                                        <td>{{$a->name}}</td>
-                                        <td>{{$a->ten_danh_muc}}</td>
-                                        <td>
-                                            @if($a->type == 0) Thu
-                                            @else Chi
-                                            @endif
-                                        </td>
-                                        <td>{{number_format($a->money_amount, 0, ",", ".")}}</td>
-                                        <td>{{date('d/m/Y', strtotime($a->date))}}</td>
-                                        <td>{{$a->describe}}</td>
-                                    </tr>
-                                @endforeach
-                            @endif
+                            <tbody id="tbody_activities">
                             </tbody>
                         </table>
                     </div>
