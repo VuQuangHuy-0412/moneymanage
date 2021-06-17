@@ -23,7 +23,24 @@ class ActivityController extends BaseController
             return redirect()->route('login');
         }
 
-        return view('app.activity.activity', compact('logged'));
+        $user_id = $logged->user_id;
+
+        $activities = $this->get_all_activity();
+
+        $query = "
+            SELECT
+                COUNT(if(c.`type` = 0, ua.activity_id, null)) so_hoat_dong_thu,
+                COUNT(if(c.`type` = 1, ua.activity_id, null)) so_hoat_dong_chi,
+                SUM(if(c.`type` = 0, ua.money_amount, 0)) tong_thu,
+                SUM(if(c.`type` = 1, ua.money_amount, 0)) tong_chi
+            FROM money_manage.user_activity ua
+            JOIN money_manage.category c ON ua.category_id = c.category_id
+            WHERE ua.user_id = $user_id;
+        ";
+
+        $data = DB::select($query);
+
+        return view('app.activity.activity', compact('logged', 'activities', 'data'));
     }
 
     public function all_activity()
@@ -82,7 +99,49 @@ class ActivityController extends BaseController
             return redirect()->route('login');
         }
 
-        return view('app.activity.activity_today', compact('logged'));
+        $activities = $this->get_data_activities_today();
+
+        $user_id = $logged->user_id;
+
+        $query = "
+            SELECT
+                COUNT(if(c.`type` = 0, ua.activity_id, null)) so_hoat_dong_thu,
+                COUNT(if(c.`type` = 1, ua.activity_id, null)) so_hoat_dong_chi,
+                SUM(if(c.`type` = 0, ua.money_amount, 0)) tong_thu,
+                SUM(if(c.`type` = 1, ua.money_amount, 0)) tong_chi
+            FROM money_manage.user_activity ua
+            JOIN money_manage.category c ON ua.category_id = c.category_id
+            WHERE ua.user_id = $user_id
+            AND date_format(STR_TO_DATE(ua.date, '%m/%d/%Y'), '%d-%m-%Y') = date_format(CURDATE(), '%d-%m-%Y');
+        ";
+
+        $data = DB::select($query);
+
+        return view('app.activity.activity_today', compact('logged', 'activities', 'data'));
+    }
+
+    public function get_data_activities_today() {
+        $logged = auth()->user();
+
+        if (!isset($logged) || empty($logged)) {
+            return redirect()->route('login');
+        }
+
+        $user_id = $logged->user_id;
+        $query = "
+            SELECT
+                ua.name,
+                ua.money_amount,
+                ua.`describe`,
+                c.name AS ten_danh_muc,
+                c.`type`
+            FROM money_manage.user_activity ua
+            JOIN money_manage.category c ON ua.category_id = c.category_id
+            WHERE ua.user_id = $user_id
+            AND date_format(STR_TO_DATE(ua.date, '%m/%d/%Y'), '%d-%m-%Y') = date_format(CURDATE(), '%d-%m-%Y');";
+        $result = DB::select($query);
+
+        return $result;
     }
 
     public function activity_month()
@@ -93,7 +152,50 @@ class ActivityController extends BaseController
             return redirect()->route('login');
         }
 
-        return view('app.activity.activity', compact('logged'));
+        $activities = $this->get_data_activities_month();
+
+        $user_id = $logged->user_id;
+
+        $query = "
+            SELECT
+                COUNT(if(c.`type` = 0, ua.activity_id, null)) so_hoat_dong_thu,
+                COUNT(if(c.`type` = 1, ua.activity_id, null)) so_hoat_dong_chi,
+                SUM(if(c.`type` = 0, ua.money_amount, 0)) tong_thu,
+                SUM(if(c.`type` = 1, ua.money_amount, 0)) tong_chi
+            FROM money_manage.user_activity ua
+            JOIN money_manage.category c ON ua.category_id = c.category_id
+            WHERE ua.user_id = $user_id
+            AND date_format(STR_TO_DATE(ua.date, '%m/%d/%Y'), '%Y-%m') = date_format(CURDATE(), '%Y-%m');
+        ";
+
+        $data = DB::select($query);
+
+        return view('app.activity.activity', compact('logged', 'activities', 'data'));
+    }
+
+    public function get_data_activities_month() {
+        $logged = auth()->user();
+
+        if (!isset($logged) || empty($logged)) {
+            return redirect()->route('login');
+        }
+
+        $user_id = $logged->user_id;
+        $query = "
+            SELECT
+                ua.name,
+                ua.money_amount,
+                ua.`describe`,
+                c.name AS ten_danh_muc,
+                c.`type`,
+                ua.date
+            FROM money_manage.user_activity ua
+            JOIN money_manage.category c ON ua.category_id = c.category_id
+            WHERE ua.user_id = $user_id
+            AND date_format(STR_TO_DATE(ua.date, '%m/%d/%Y'), '%Y-%m') = date_format(CURDATE(), '%Y-%m');";
+        $result = DB::select($query);
+
+        return $result;
     }
 
     public function add_activity(Request $request)

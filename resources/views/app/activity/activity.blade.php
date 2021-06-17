@@ -259,7 +259,7 @@
                             <tbody>
                             @if(!isset($activities) || empty($activities))
                                 <tr>
-                                    <td class="text-center" colspan="5">Chưa có hoạt động nào trong hôm nay!</td>
+                                    <td class="text-center" colspan="6">Chưa có hoạt động nào!</td>
                                 </tr>
                             @else
                                 @foreach($activities as $a)
