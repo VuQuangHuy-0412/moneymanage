@@ -75,6 +75,9 @@ Route::get('/add-activity', 'App\ActivityController@add_activity')->name('app.ad
 Route::post('/store-activity', 'App\ActivityController@store_activity')->name('app.store-activity');
 Route::post('/get-data-activity', 'App\ActivityController@get_data_activity')->name('app.get-data-activity');
 Route::get('/edit-activity', 'App\ActivityController@edit_activity')->name('app.edit-activity');
+Route::post('/get-activity-detail', 'App\ActivityController@get_activity_detail')->name('app.get-activity-detail');
+Route::post('/restore-activity', 'App\ActivityController@restore_activity')->name('app.restore-activity');
+
 
 Route::get('/report', 'App\ReportController@report')->name('app.report');
 Route::get('/report-today', 'App\ReportController@report_today')->name('app.report-today');

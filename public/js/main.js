@@ -242,7 +242,7 @@
                 } else {
                     // Go through and add each event as a card to the events container
                     for (var i = 0; i < response.length; i++) {
-                        var signal = (response[i]["type"] == 0)?'+':'-';
+                        var signal = (response[i]["type"] == 0) ? '+' : '-';
                         var event_card = $("<div class='event-card'></div>");
                         var event_name = $("<div class='event-name' style='color: black'>" + response[i]["name"] + ":</div>");
                         var event_count = $("<div class='event-count'>" + signal + ' ' + response[i]["money_amount"].toLocaleString() + " đồng" + "</div>");
@@ -262,8 +262,7 @@
                     td.appendChild(document.createTextNode(text));
                     tr.appendChild(td);
                     tbdy.appendChild(tr);
-                }
-                else {
+                } else {
                     for (var i = 0; i < response.length; i++) {
                         var tr = document.createElement('tr');
                         var td1 = document.createElement('td');
@@ -273,7 +272,7 @@
                         td2.appendChild(document.createTextNode(response[i]["ten_danh_muc"]));
                         tr.appendChild(td2);
                         var td3 = document.createElement('td');
-                        td3.appendChild(document.createTextNode((response[i]["type"] == 0)?'Thu':'Chi'));
+                        td3.appendChild(document.createTextNode((response[i]["type"] == 0) ? 'Thu' : 'Chi'));
                         tr.appendChild(td3);
                         var td4 = document.createElement('td');
                         td4.appendChild(document.createTextNode(response[i]["money_amount"]));
@@ -285,13 +284,60 @@
                     }
                 }
                 var table = document.getElementById('table');
-                table.removeChild(oldTbdy);
-                table.appendChild(tbdy);
+                if (oldTbdy) {
+                    table.removeChild(oldTbdy);
+                    table.appendChild(tbdy);
+                }
+
+                var oldTbdy = document.getElementById('tbody_activities1');
+                var tbdy = document.createElement('tbody');
+                tbdy.id = 'tbody_activities1';
+                if (response.length === 0) {
+                    var tr = document.createElement('tr');
+                    var td = document.createElement('td');
+                    td.className = 'text-center';
+                    td.colSpan = 5;
+                    var text = "Chưa có hoạt động nào trong ngày " + day + "/" + month_number + ".";
+                    td.appendChild(document.createTextNode(text));
+                    tr.appendChild(td);
+                    tbdy.appendChild(tr);
+                } else {
+                    for (var i = 0; i < response.length; i++) {
+                        var tr = document.createElement('tr');
+                        var td1 = document.createElement('td');
+                        td1.appendChild(document.createTextNode(response[i]["name"]));
+                        tr.appendChild(td1);
+                        var td2 = document.createElement('td');
+                        td2.appendChild(document.createTextNode(response[i]["ten_danh_muc"]));
+                        tr.appendChild(td2);
+                        var td3 = document.createElement('td');
+                        td3.appendChild(document.createTextNode((response[i]["type"] == 0) ? 'Thu' : 'Chi'));
+                        tr.appendChild(td3);
+                        var td4 = document.createElement('td');
+                        td4.appendChild(document.createTextNode(response[i]["money_amount"]));
+                        tr.appendChild(td4);
+                        var td5 = document.createElement('td');
+                        var td6 = document.createElement('td');
+                        td5.appendChild(document.createTextNode(response[i]["describe"]));
+                        tr.appendChild(td5);
+
+                        td6.innerHTML = '<button type="button" data-id="' + response[i]["activity_id"] + '" class="btn-open-detail"><span><i class="fa fa-pen" aria-hidden="true"></i></span></button>';
+                        // td6.html("<div><span><i class=\"fa fa-pencil\" aria-hidden=\"true\"></i></span></div>");
+                        tr.appendChild(td6);
+                        tbdy.appendChild(tr);
+                    }
+                }
+                var table = document.getElementById('table1');
+                if (oldTbdy) {
+                    table.removeChild(oldTbdy);
+                    table.appendChild(tbdy);
+                }
             },
             error: function (e) {
                 alert("Có lỗi trong quá trình xử lý");
             }
         });
+
     }
 
     // Checks if a specific date has any events

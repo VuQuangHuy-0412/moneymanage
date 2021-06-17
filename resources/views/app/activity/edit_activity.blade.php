@@ -19,8 +19,10 @@
     <link href="{!! asset('css/custom.css') !!}" rel="stylesheet" type="text/css">
 
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <link href="https://cdn.datatables.net/1.10.20/css/dataTables.bootstrap4.min.css" rel="stylesheet" crossorigin="anonymous" />
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/js/all.min.js" crossorigin="anonymous"></script>
+    <link href="https://cdn.datatables.net/1.10.20/css/dataTables.bootstrap4.min.css" rel="stylesheet"
+          crossorigin="anonymous"/>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/js/all.min.js"
+            crossorigin="anonymous"></script>
 
     <!-- Custom styles for this template -->
     <link href="{!! asset('css/modern-business.css') !!}" rel="stylesheet">
@@ -38,7 +40,9 @@
 <nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
     <div class="container-fluid">
         <a class="navbar-brand" href="{!! route('app.home') !!}">MoneyManage</a>
-        <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+        <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse"
+                data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false"
+                aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarResponsive">
@@ -81,7 +85,8 @@
                     </div>
                 </li>--}}
                 <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownPages" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownPages" data-toggle="dropdown"
+                       aria-haspopup="true" aria-expanded="false">
                         Tài khoản
                     </a>
                     <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownPages">
@@ -101,29 +106,34 @@
                 <div class="nav">
 
                     <div class="sb-sidenav-menu-heading">Hoạt Động</div>
-                    <a class="nav-link collapsed" href="{!! route('app.activity') !!}" data-toggle="collapse" data-target="#collapseDashboard" aria-expanded="false" aria-controls="collapseDashboard">
+                    <a class="nav-link collapsed" href="{!! route('app.activity') !!}" data-toggle="collapse"
+                       data-target="#collapseDashboard" aria-expanded="false" aria-controls="collapseDashboard">
                         <div class="sb-nav-link-icon"><i class="fas fa-columns"></i></div>
                         Hoạt Động
                         <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
                     </a>
-                    <div class="collapse" id="collapseDashboard" aria-labelledby="headingOne" data-parent="#sidenavAccordion">
+                    <div class="collapse" id="collapseDashboard" aria-labelledby="headingOne"
+                         data-parent="#sidenavAccordion">
                         <nav class="sb-sidenav-menu-nested nav">
                             <a class="nav-link" href="{!! route('app.all-activity') !!}">Thống Kê Hoạt Động</a>
                         </nav>
                     </div>
-                    <div class="collapse" id="collapseDashboard" aria-labelledby="headingOne" data-parent="#sidenavAccordion">
+                    <div class="collapse" id="collapseDashboard" aria-labelledby="headingOne"
+                         data-parent="#sidenavAccordion">
                         <nav class="sb-sidenav-menu-nested nav">
                             <a class="nav-link" href="{!! route('app.activity-today') !!}">Hoạt Động Hôm Nay</a>
                         </nav>
                     </div>
-                    <div class="collapse" id="collapseDashboard" aria-labelledby="headingOne" data-parent="#sidenavAccordion">
+                    <div class="collapse" id="collapseDashboard" aria-labelledby="headingOne"
+                         data-parent="#sidenavAccordion">
                         <nav class="sb-sidenav-menu-nested nav">
                             <a class="nav-link" href="{!! route('app.activity-month') !!}">Hoạt Động Trong Tháng</a>
                         </nav>
                     </div>
 
                     <div class="sb-sidenav-menu-heading">Chỉnh Sửa</div>
-                    <a class="nav-link collapsed" href="{!! route('app.activity') !!}" data-toggle="collapse" data-target="#collapseIn" aria-expanded="false" aria-controls="collapseIn">
+                    <a class="nav-link collapsed" href="{!! route('app.activity') !!}" data-toggle="collapse"
+                       data-target="#collapseIn" aria-expanded="false" aria-controls="collapseIn">
                         <div class="sb-nav-link-icon"><i class="fas fa-columns"></i></div>
                         Chỉnh Sửa
                         <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
@@ -219,7 +229,7 @@
                 <h4>Danh sách các hoạt động trong ngày</h4>
                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                     <div class="ibox-content">
-                        <table class="table table-bordered" id="table">
+                        <table class="table table-bordered" id="table1">
                             <thead>
                             <tr>
                                 <th>Tên hoạt động</th>
@@ -227,9 +237,10 @@
                                 <th>Loại danh mục</th>
                                 <th>Số tiền (đồng)</th>
                                 <th>Mô tả</th>
+                                <th>Sửa</th>
                             </tr>
                             </thead>
-                            <tbody id="tbody_activities">
+                            <tbody id="tbody_activities1">
                             </tbody>
                         </table>
                     </div>
@@ -250,9 +261,124 @@
     </div>
 
 </div>
+
+<!-- Modal -->
+<div class="modal fade" id="myModal" role="dialog">
+    <div class="modal-dialog">
+
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-body" style="padding:40px 30px;">
+                @include('elements.alert')
+                <form
+                    method="POST"
+                    autocomplete="off"
+                    action="{!! route('app.restore-activity') !!}"
+                    class="form-horizontal"
+                    enctype="multipart/form-data"
+                    id="form">
+                    @csrf
+                    <input type="hidden" name="activity_id" id="activity_id">
+                    <div class="row">
+                        <div class="col-lg-3 col-md-3 col-sm-4 col-xs-5 form-control-label">
+                            <label class="col-form-label" style="color: #1b1e21">Loại hoạt động</label>
+                        </div>
+                        <div class="col-lg-9 col-md-9 col-sm-8 col-xs-7">
+                            <div class="form-group">
+                                <div class="form-line">
+                                    <select name="category_type" id="category_type" class="form-control">
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-3 col-md-3 col-sm-4 col-xs-5 form-control-label">
+                            <label class="col-form-label" style="color: #1b1e21">Danh mục</label>
+                        </div>
+                        <div class="col-lg-9 col-md-9 col-sm-8 col-xs-7">
+                            <div class="form-group">
+                                <div class="form-line">
+                                    <select name="category_id" id="category_id" class="form-control">
+                                        @foreach($category as $d)
+                                            <option value="{{$d->category_id}}">{{$d->name}}</option>
+                                        @endforeach
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-3 col-md-3 col-sm-4 col-xs-5 form-control-label">
+                            <label class="col-form-label" for="inputDescribe" style="color: #1b1e21">Tên hoạt
+                                động</label>
+                        </div>
+                        <div class="col-lg-9 col-md-9 col-sm-8 col-xs-7">
+                            <div class="form-group">
+                                <div class="form-line">
+                                    <input type="text" class="form-control py-4" name="name"
+                                           placeholder="Tên hoạt động" id="name"/>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-3 col-md-3 col-sm-4 col-xs-5 form-control-label">
+                            <label class="col-form-label" for="inputMoneyAmount" style="color: #1b1e21">Số tiền</label>
+                        </div>
+                        <div class="col-lg-9 col-md-9 col-sm-8 col-xs-7">
+                            <div class="form-group">
+                                <div class="form-line">
+                                    <input type="number" class="form-control py-4" name="money_amount"
+                                           placeholder="Nhập số tiền" id="money_amount"/>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-3 col-md-3 col-sm-4 col-xs-5 form-control-label">
+                            <label class="col-form-label" for="inputDescribe" style="color: #1b1e21">Mô tả</label>
+                        </div>
+                        <div class="col-lg-9 col-md-9 col-sm-8 col-xs-7">
+                            <div class="form-group">
+                                <div class="form-line">
+                                    <input type="text" class="form-control py-4" name="describe"
+                                           placeholder="Mô tả chi tiết" id="describe"/>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-3 col-md-3 col-sm-4 col-xs-5 form-control-label">
+                            <label class="col-form-label" for="inputDate" style="color: #1b1e21">Ngày</label>
+                        </div>
+                        <div class="col-lg-9 col-md-9 col-sm-8 col-xs-7">
+                            <div class="form-group">
+                                <div class="form-line">
+                                    <input type="text" class="form-control py-4" name="date"
+                                           placeholder="Ngày" id="date"/>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group mt-4 mb-0">
+                        <button type="submit" class="btn btn-primary btn-block">Sửa Hoạt Động</button>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="submit" class="btn btn-danger btn-default pull-left" data-dismiss="modal"><span
+                        class="glyphicon glyphicon-remove"></span> Cancel
+                </button>
+            </div>
+        </div>
+
+    </div>
+</div>
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" crossorigin="anonymous"></script>
 <script src="js/jquery.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js"
+        crossorigin="anonymous"></script>
 <script src="js/scripts.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js" crossorigin="anonymous"></script>
 <script src="assets/demo/chart-area-demo.js"></script>
@@ -264,7 +390,45 @@
 <script src="js/bootstrap.min.js"></script>
 <script src="js/main.js"></script>
 <script>
-    $('#navbarDropdownPages').trigger('click')
+    $('#navbarDropdownPages').trigger('click');
+
+    $('#table1').on('click', '.btn-open-detail', function (e) {
+        var activity_id = $(this).data('id');
+        console.log(activity_id);
+        $("#myModal").modal();
+        $.ajax({
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name=csrf-token]').attr('content')
+            },
+            url: '/get-activity-detail',
+            data: {
+                activity_id: activity_id
+            },
+            type: 'post',
+            cache: true,
+            success: function (response) {
+                console.log(response);
+                var category_type = document.getElementById('category_type');
+                var html = '<option value="0" ' + (response[0]["category_type"] == 0 ? "selected" : '') + '>Thu</option>';
+                html += '<option value="1" ' + (response[0]["category_type"] == 1 ? "selected" : '') + '>Chi</option>';
+                category_type.innerHTML = html;
+                var category = document.getElementById('category_id');
+                var category_id = response[0]["category_id"];
+                $('#category_id').val(category_id);
+                $('#category_id option[value=' + category_id + ']').attr('selected', 'selected');
+                console.log(category);
+                var name = document.getElementById('name');
+                name.placeholder = response[0]['name'];
+                var money_amount = document.getElementById('money_amount');
+                money_amount.placeholder = response[0]['money_amount'];
+                var describe = document.getElementById('describe');
+                describe.placeholder = response[0]['describe'];
+                var date = document.getElementById('date');
+                date.placeholder = response[0]['date'];
+                $('#activity_id').val(activity_id);
+            }
+        });
+    })
 </script>
 
 </body>
