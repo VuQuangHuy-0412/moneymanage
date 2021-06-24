@@ -11,7 +11,7 @@
     <meta name="author" content="">
 
     <!--Title-->
-    <title>Báo Cáo Chi Tiết Theo Tháng</title>
+    <title>Báo Cáo Theo Tháng</title>
 
     <!-- Bootstrap core CSS -->
     <link href="{!! asset('vendorapp/bootstrap/css/bootstrap.min.css') !!}" rel="stylesheet">
@@ -152,14 +152,121 @@
     <div id="layoutSidenav_content">
         <main>
             <div class="container-fluid">
-                <h1 class="mt-4">Báo Cáo</h1>
+                <h1 class="mt-4">Báo cáo</h1>
                 <ol class="breadcrumb mb-4">
-                    <li class="breadcrumb-item active">Báo Cáo Chi Tiết Theo Tháng</li>
+                    <li class="breadcrumb-item active">Báo Cáo Theo Tháng</li>
                 </ol>
             </div>
             <div class="container-fluid">
-
+                @include('elements.alert')
+                <div class="card-body">
+                    <form method="GET" autocomplete="off" route="app.month-detail" class="form-horizontal" enctype="multipart/form-data">
+                        @csrf
+                        <div class="row">
+                            <div class="col-xl-8 col-md-12">
+                                <div class="row">
+                                    <div class="col-lg-3 col-md-3 col-sm-4 col-xs-5 form-control-label">
+                                        <label class="col-form-label" for="inputMonth">Chọn tháng</label>
+                                    </div>
+                                    <div class="col-lg-9 col-md-9 col-sm-8 col-xs-7">
+                                        <div class="form-group">
+                                            <div class="form-line">
+                                                <input type="text" class="form-control py-4" name="month"
+                                                       placeholder="{{$month}}"/>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-xl-3 col-md-12">
+                                <div class="form-group">
+                                    <button type="submit" class="btn btn-primary btn-block">Xem chi tiết</button>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
             </div>
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-xl-6 col-md-12">
+                        <div class="card bg-primary text-white mb-4">
+                            <div class="card-body">Tổng số tiền đã chi trong tháng</div>
+                            <div class="card-footer d-flex align-items-center justify-content-between">
+                                @if(!isset($datas[0]->tien_chi) || empty($datas[0]->tien_chi)) 0 đồng
+                                @else
+                                    {{number_format($datas[0]->tien_chi, 0, ",", ".")}} đồng
+                                    <input type="hidden" id="tien_thu" value="{{$datas[0]->tien_thu}}">
+                                @endif
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-6 col-md-12">
+                        <div class="card bg-primary text-white mb-4">
+                            <div class="card-body">Tổng số tiền đã thu trong tháng</div>
+                            <div class="card-footer d-flex align-items-center justify-content-between">
+                                @if(!isset($datas[0]->tien_thu) || empty($datas[0]->tien_thu)) 0 đồng
+                                @else
+                                    {{number_format($datas[0]->tien_thu, 0, ",", ".")}} đồng
+                                    <input type="hidden" id="tien_thu" value="{{$datas[0]->tien_thu}}">
+                                @endif
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="container-fluid">
+                <h4>Tương quan thu chi trong tháng</h4>
+                <div class="col-xl-6">
+                    @if(!isset($datas) || empty($datas))
+                        <div style="height: 50px">Chưa có hoạt động nào trong tháng này!</div>
+                    @else
+                        <div class="card mb-4">
+                            <div class="card-body"><canvas id="myBarChart" width="100%" height="40"></canvas></div>
+                        </div>
+                    @endif
+                </div>
+            </div>
+            <div class="container-fluid">
+                <h4>Danh sách các hoạt động trong tháng</h4>
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                    <div class="ibox-content">
+                        <table class="table table-bordered">
+                            <tr>
+                            <tr>
+                                <th>Tên hoạt động</th>
+                                <th>Danh mục</th>
+                                <th>Loại danh mục</th>
+                                <th>Ngày</th>
+                                <th>Số tiền (đồng)</th>
+                                <th>Mô tả</th>
+                            </tr>
+                            @if(!isset($activities) || empty($activities))
+                                <tr>
+                                    <td class="text-center" colspan="5">Chưa có hoạt động nào trong tháng này!</td>
+                                </tr>
+                            @else
+                                @foreach($activities as $a)
+                                    <tr>
+                                        <td>{{$a->name}}</td>
+                                        <td>{{$a->ten_danh_muc}}</td>
+                                        <td>
+                                            @if($a->type == 0) Thu
+                                            @else Chi
+                                            @endif
+                                        </td>
+                                        <td>{{$a->date}}</td>
+                                        <td>{{number_format($a->money_amount, 0, ",", ".")}}</td>
+                                        <td>{{$a->describe}}</td>
+                                    </tr>
+                                    @endforeach
+                                    @endif
+                                    </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
         </main>
         <footer class="py-4 bg-light mt-auto">
             <div class="container-fluid">
