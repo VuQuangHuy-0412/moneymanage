@@ -219,7 +219,7 @@
                 <h4>Tương quan thu chi trong tháng</h4>
                 <div class="col-xl-6">
                     @if(!isset($datas) || empty($datas))
-                        <div style="height: 50px">Chưa có hoạt động nào trong tháng này!</div>
+                        <div style="height: 50px">Chưa có hoạt động nào trong tháng {{$month}}!</div>
                     @else
                         <div class="card mb-4">
                             <div class="card-body"><canvas id="myBarChart" width="100%" height="40"></canvas></div>
@@ -243,7 +243,7 @@
                             </tr>
                             @if(!isset($activities) || empty($activities))
                                 <tr>
-                                    <td class="text-center" colspan="5">Chưa có hoạt động nào trong tháng này!</td>
+                                    <td class="text-center" colspan="5">Chưa có hoạt động nào trong tháng {{$month}}!</td>
                                 </tr>
                             @else
                                 @foreach($activities as $a)

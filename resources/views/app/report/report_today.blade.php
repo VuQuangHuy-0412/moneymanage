@@ -188,7 +188,8 @@
             <div class="container-fluid mb-4">
                 <h4>Tương quan thu chi trong ngày</h4>
                 <div class="col-xl-6">
-                    @if(!isset($datas) || empty($datas)) Chưa có hoạt động nào trong hôm nay!
+                    @if(!isset($datas) || empty($datas))
+                        <div style="height: 50px">Chưa có hoạt động nào trong hôm nay!</div>
                     @else
                         <div class="card mb-4">
                             <div class="card-body"><canvas id="myBarChart" width="100%" height="40"></canvas></div>
