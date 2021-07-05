@@ -158,7 +158,83 @@
                 </ol>
             </div>
             <div class="container-fluid">
-
+                <div class="row">
+                    <div class="col-xl-6 col-md-12">
+                        <div class="card bg-primary text-white mb-4">
+                            <div class="card-body">Tổng số tiền đã chi trong tháng</div>
+                            <div class="card-footer d-flex align-items-center justify-content-between">
+                                @if(!isset($datas[0]->tien_chi) || empty($datas[0]->tien_chi)) 0 đồng
+                                @else
+                                    {{number_format($datas[0]->tien_chi, 0, ",", ".")}} đồng
+                                    <input type="hidden" id="tien_thu" value="{{$datas[0]->tien_thu}}">
+                                @endif
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-6 col-md-12">
+                        <div class="card bg-primary text-white mb-4">
+                            <div class="card-body">Tổng số tiền đã thu trong tháng</div>
+                            <div class="card-footer d-flex align-items-center justify-content-between">
+                                @if(!isset($datas[0]->tien_thu) || empty($datas[0]->tien_thu)) 0 đồng
+                                @else
+                                    {{number_format($datas[0]->tien_thu, 0, ",", ".")}} đồng
+                                    <input type="hidden" id="tien_thu" value="{{$datas[0]->tien_thu}}">
+                                @endif
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="container-fluid">
+                <h4>Tương quan thu chi trong tháng</h4>
+                <div class="col-xl-6">
+                    @if(!isset($datas) || empty($datas))
+                        <div style="height: 50px">Chưa có hoạt động nào trong tháng này!</div>
+                    @else
+                        <div class="card mb-4">
+                            <div class="card-body"><canvas id="myBarChart" width="100%" height="40"></canvas></div>
+                        </div>
+                    @endif
+                </div>
+            </div>
+            <div class="container-fluid">
+                <h4>Danh sách các hoạt động trong tháng</h4>
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                    <div class="ibox-content">
+                        <table class="table table-bordered">
+                            <tr>
+                            <tr>
+                                <th>Tên hoạt động</th>
+                                <th>Danh mục</th>
+                                <th>Loại danh mục</th>
+                                <th>Ngày</th>
+                                <th>Số tiền (đồng)</th>
+                                <th>Mô tả</th>
+                            </tr>
+                            @if(!isset($activities) || empty($activities))
+                                <tr>
+                                    <td class="text-center" colspan="5">Chưa có hoạt động nào trong tháng này!</td>
+                                </tr>
+                            @else
+                                @foreach($activities as $a)
+                                    <tr>
+                                        <td>{{$a->name}}</td>
+                                        <td>{{$a->ten_danh_muc}}</td>
+                                        <td>
+                                            @if($a->type == 0) Thu
+                                            @else Chi
+                                            @endif
+                                        </td>
+                                        <td>{{$a->date}}</td>
+                                        <td>{{number_format($a->money_amount, 0, ",", ".")}}</td>
+                                        <td>{{$a->describe}}</td>
+                                    </tr>
+                                    @endforeach
+                                    @endif
+                                    </tbody>
+                        </table>
+                    </div>
+                </div>
             </div>
         </main>
         <footer class="py-4 bg-light mt-auto">
