@@ -157,11 +157,16 @@
                     <li class="breadcrumb-item active">Báo Cáo Bảy Ngày Gần Nhất</li>
                 </ol>
             </div>
+            @for($i = 1; $i < 8; $i++)
+                <input type="hidden" id="day{{$i}}" value="{{$detail[$i-1]->date}}">
+                <input type="hidden" id="tien_thu_{{$i}}" value="{{$detail[$i-1]->thu}}">
+                <input type="hidden" id="tien_chi_{{$i}}" value="{{$detail[$i-1]->chi}}">
+            @endfor
             <div class="container-fluid">
                 <div class="row">
                     <div class="col-xl-6 col-md-12">
                         <div class="card bg-primary text-white mb-4">
-                            <div class="card-body">Tổng số tiền đã chi trong ngày</div>
+                            <div class="card-body">Tổng số tiền đã chi trong bảy ngày gần nhất</div>
                             <div class="card-footer d-flex align-items-center justify-content-between">
                                 @if(!isset($datas[0]->tien_chi) || empty($datas[0]->tien_chi)) 0 đồng
                                 @else
@@ -173,7 +178,7 @@
                     </div>
                     <div class="col-xl-6 col-md-12">
                         <div class="card bg-primary text-white mb-4">
-                            <div class="card-body">Tổng số tiền đã thu trong ngày</div>
+                            <div class="card-body">Tổng số tiền đã thu trong bảy ngày gần nhất</div>
                             <div class="card-footer d-flex align-items-center justify-content-between">
                                 @if(!isset($datas[0]->tien_thu) || empty($datas[0]->tien_thu)) 0 đồng
                                 @else
@@ -186,10 +191,10 @@
                 </div>
             </div>
             <div class="container-fluid mb-4">
-                <h4>Tương quan thu chi trong ngày</h4>
+                <h4>Tương quan thu chi trong bảy ngày gần nhất</h4>
                 <div class="col-xl-6">
                     @if(!isset($datas) || empty($datas))
-                        <div style="height: 50px">Chưa có hoạt động nào trong hôm nay!</div>
+                        <div style="height: 50px">Chưa có hoạt động nào trong bảy ngày gần nhất!</div>
                     @else
                         <div class="card mb-4">
                             <div class="card-body"><canvas id="myBarChart" width="100%" height="40"></canvas></div>
@@ -197,8 +202,34 @@
                     @endif
                 </div>
             </div>
+            <div class="row">
+                <div class="container-fluid col-xl-6">
+                    <h4>Tương quan thu trong bảy ngày gần nhất</h4>
+                    <div class="col-xl-12">
+                        @if(!isset($datas) || empty($datas))
+                            <div style="height: 50px">Chưa có hoạt động thu nào trong bảy ngày gần nhất!</div>
+                        @else
+                            <div class="card mb-4">
+                                <div class="card-body"><canvas id="myAreaChart1" width="100%" height="60"></canvas></div>
+                            </div>
+                        @endif
+                    </div>
+                </div>
+                <div class="container-fluid col-xl-6">
+                    <h4>Tương quan chi trong bảy ngày gần nhất</h4>
+                    <div class="col-xl-12">
+                        @if(!isset($datas) || empty($datas))
+                            <div style="height: 50px">Chưa có hoạt động chi nào trong bảy ngày gần nhất!</div>
+                        @else
+                            <div class="card mb-4">
+                                <div class="card-body"><canvas id="myAreaChart" width="100%" height="60"></canvas></div>
+                            </div>
+                        @endif
+                    </div>
+                </div>
+            </div>
             <div class="container-fluid">
-                <h4>Danh sách các hoạt động trong ngày</h4>
+                <h4>Danh sách các hoạt động trong bảy ngày gần nhất</h4>
                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                     <div class="ibox-content">
                         <table class="table table-bordered">
@@ -207,6 +238,7 @@
                                 <th>Tên hoạt động</th>
                                 <th>Danh mục</th>
                                 <th>Loại danh mục</th>
+                                <th>Ngày</th>
                                 <th>Số tiền (đồng)</th>
                                 <th>Mô tả</th>
                             </tr>
@@ -214,7 +246,7 @@
                             <tbody>
                             @if(!isset($activities) || empty($activities))
                                 <tr>
-                                    <td class="text-center" colspan="5">Chưa có hoạt động nào trong hôm nay!</td>
+                                    <td class="text-center" colspan="6">Chưa có hoạt động nào trong bảy ngày gần nhất!</td>
                                 </tr>
                             @else
                                 @foreach($activities as $a)
@@ -226,6 +258,7 @@
                                             @else Chi
                                             @endif
                                         </td>
+                                        <td>{{$a->date}}</td>
                                         <td>{{number_format($a->money_amount, 0, ",", ".")}}</td>
                                         <td>{{$a->describe}}</td>
                                     </tr>

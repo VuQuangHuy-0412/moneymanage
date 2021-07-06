@@ -7,7 +7,7 @@ var ctx = document.getElementById("myAreaChart");
 var myLineChart = new Chart(ctx, {
   type: 'line',
   data: {
-    labels: ["Mar 1", "Mar 2", "Mar 3", "Mar 4", "Mar 5", "Mar 6", "Mar 7", "Mar 8", "Mar 9", "Mar 10", "Mar 11", "Mar 12", "Mar 13"],
+    labels: [$("#day1").val(), $("#day2").val(), $("#day3").val(), $("#day4").val(), $("#day5").val(), $("#day6").val(), $("#day7").val()],
     datasets: [{
       label: "Sessions",
       lineTension: 0.3,
@@ -20,7 +20,7 @@ var myLineChart = new Chart(ctx, {
       pointHoverBackgroundColor: "rgba(2,117,216,1)",
       pointHitRadius: 50,
       pointBorderWidth: 2,
-      data: [10000, 30162, 26263, 18394, 18287, 28682, 31274, 33259, 25849, 24159, 32651, 31984, 38451],
+      data: [$("#tien_chi_1").val(), $("#tien_chi_2").val(), $("#tien_chi_3").val(), $("#tien_chi_4").val(), $("#tien_chi_5").val(), $("#tien_chi_6").val(), $("#tien_chi_7").val()],
     }],
   },
   options: {
@@ -39,8 +39,7 @@ var myLineChart = new Chart(ctx, {
       yAxes: [{
         ticks: {
           min: 0,
-          max: 40000,
-          maxTicksLimit: 5
+          maxTicksLimit: 10
         },
         gridLines: {
           color: "rgba(0, 0, 0, .125)",
@@ -51,4 +50,53 @@ var myLineChart = new Chart(ctx, {
       display: false
     }
   }
+});
+
+var ctx1 = document.getElementById("myAreaChart1");
+var myLineChart1 = new Chart(ctx1, {
+    type: 'line',
+    data: {
+        labels: [$("#day1").val(), $("#day2").val(), $("#day3").val(), $("#day4").val(), $("#day5").val(), $("#day6").val(), $("#day7").val()],
+        datasets: [{
+            label: "Sessions",
+            lineTension: 0.3,
+            backgroundColor: "rgba(2,117,216,0.2)",
+            borderColor: "rgba(2,117,216,1)",
+            pointRadius: 5,
+            pointBackgroundColor: "rgba(2,117,216,1)",
+            pointBorderColor: "rgba(255,255,255,0.8)",
+            pointHoverRadius: 5,
+            pointHoverBackgroundColor: "rgba(2,117,216,1)",
+            pointHitRadius: 50,
+            pointBorderWidth: 2,
+            data: [$("#tien_thu_1").val(), $("#tien_thu_2").val(), $("#tien_thu_3").val(), $("#tien_thu_4").val(), $("#tien_thu_5").val(), $("#tien_thu_6").val(), $("#tien_thu_7").val()],
+        }],
+    },
+    options: {
+        scales: {
+            xAxes: [{
+                time: {
+                    unit: 'date'
+                },
+                gridLines: {
+                    display: false
+                },
+                ticks: {
+                    maxTicksLimit: 7
+                }
+            }],
+            yAxes: [{
+                ticks: {
+                    min: 0,
+                    maxTicksLimit: 10
+                },
+                gridLines: {
+                    color: "rgba(0, 0, 0, .125)",
+                }
+            }],
+        },
+        legend: {
+            display: false
+        }
+    }
 });
