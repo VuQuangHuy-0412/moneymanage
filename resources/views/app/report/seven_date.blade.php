@@ -48,7 +48,7 @@
                     <a class="nav-link" href="{!! route('app.activity') !!}">Hoạt động</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="{!! route('app.report') !!}">Báo cáo</a>
+                    <a class="nav-link" href="{!! route('app.report-today') !!}">Báo cáo</a>
                 </li>
                 {{--<li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownPortfolio" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -91,17 +91,17 @@
         <nav class="sb-sidenav accordion sb-sidenav-dark" id="sidenavAccordion">
             <div class="sb-sidenav-menu">
                 <div class="nav">
-                    <div class="sb-sidenav-menu-heading">Báo cáo tổng quát</div>
-                    <a class="nav-link collapsed" href="{!! route('app.info') !!}" data-toggle="collapse" data-target="#collapseAll" aria-expanded="false" aria-controls="collapseDashboard">
-                        <div class="sb-nav-link-icon"><i class="fas fa-columns"></i></div>
-                        Báo cáo tổng quát
-                        <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
-                    </a>
-                    <div class="collapse" id="collapseAll" aria-labelledby="headingOne" data-parent="#sidenavAccordion">
-                        <nav class="sb-sidenav-menu-nested nav">
-                            <a class="nav-link" href="{!! route('app.report') !!}">Báo cáo tổng quát</a>
-                        </nav>
-                    </div>
+{{--                    <div class="sb-sidenav-menu-heading">Báo cáo tổng quát</div>--}}
+{{--                    <a class="nav-link collapsed" href="{!! route('app.info') !!}" data-toggle="collapse" data-target="#collapseAll" aria-expanded="false" aria-controls="collapseDashboard">--}}
+{{--                        <div class="sb-nav-link-icon"><i class="fas fa-columns"></i></div>--}}
+{{--                        Báo cáo tổng quát--}}
+{{--                        <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>--}}
+{{--                    </a>--}}
+{{--                    <div class="collapse" id="collapseAll" aria-labelledby="headingOne" data-parent="#sidenavAccordion">--}}
+{{--                        <nav class="sb-sidenav-menu-nested nav">--}}
+{{--                            <a class="nav-link" href="{!! route('app.report') !!}">Báo cáo tổng quát</a>--}}
+{{--                        </nav>--}}
+{{--                    </div>--}}
 
                     <div class="sb-sidenav-menu-heading">Báo cáo hôm nay</div>
                     <a class="nav-link collapsed" href="{!! route('app.info') !!}" data-toggle="collapse" data-target="#collapseNow" aria-expanded="false" aria-controls="collapseDashboard">

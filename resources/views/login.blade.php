@@ -67,14 +67,14 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="row">
-                                        <div class="form-group">
-                                            <div class="custom-control custom-checkbox">
-                                                <input class="custom-control-input" id="logInAsAdmin" name="logInAsAdmin" value="yes" type="checkbox" />
-                                                <label class="custom-control-label" for="logInAsAdmin">Đăng nhập với tư cách quản trị viên</label>
-                                            </div>
-                                        </div>
-                                    </div>
+{{--                                    <div class="row">--}}
+{{--                                        <div class="form-group">--}}
+{{--                                            <div class="custom-control custom-checkbox">--}}
+{{--                                                <input class="custom-control-input" id="logInAsAdmin" name="logInAsAdmin" value="yes" type="checkbox" />--}}
+{{--                                                <label class="custom-control-label" for="logInAsAdmin">Đăng nhập với tư cách quản trị viên</label>--}}
+{{--                                            </div>--}}
+{{--                                        </div>--}}
+{{--                                    </div>--}}
                                     <div class="form-group d-flex align-items-center justify-content-between mt-4 mb-0">
                                         <a class="small" href="{!! route('password') !!}">Quên mật khẩu?</a>
                                     </div>

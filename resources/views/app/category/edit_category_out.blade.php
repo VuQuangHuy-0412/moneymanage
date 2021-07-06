@@ -50,7 +50,7 @@
                     <a class="nav-link" href="{!! route('app.activity') !!}">Hoạt động</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="{!! route('app.report') !!}">Báo cáo</a>
+                    <a class="nav-link" href="{!! route('app.report-today') !!}">Báo cáo</a>
                 </li>
                 {{--<li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownPortfolio" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">

@@ -406,8 +406,9 @@ class ReportController extends BaseController
         $datas = $this->get_amount_six_month();
         $activities = $this->get_list_activity_six_month();
         $detail = $this->get_money_six_month();
+        $detail_by_category = $this->get_amount_by_category_six_month();
 
-        return view('app.report.six_month', compact('logged', 'detail', 'datas', 'activities'));
+        return view('app.report.six_month', compact('logged', 'detail', 'datas', 'activities', 'detail_by_category'));
     }
 
     public function get_money_six_month() {
@@ -535,6 +536,25 @@ class ReportController extends BaseController
 			WHERE ua.user_id = $user_id
 			AND ua.created_at BETWEEN DATE_FORMAT(ADDDATE(NOW(),INTERVAL -5 MONTH), '01-%m-%Y') AND NOW()
 			ORDER BY ua.activity_id DESC;";
+
+        $datas = DB::select($query);
+        return $datas;
+    }
+
+    public function get_amount_by_category_six_month() {
+        $logged = auth()->user();
+        $user_id = $logged->user_id;
+        $query = "
+            SELECT
+                c.category_id,
+                c.name AS ten_danh_muc,
+                c.`type`,
+                SUM(ua.money_amount) AS tong_tien
+            FROM money_manage.user_activity ua
+            JOIN money_manage.category c ON ua.category_id = c.category_id
+            WHERE ua.user_id = $user_id
+            AND ua.created_at BETWEEN DATE_FORMAT(ADDDATE(NOW(),INTERVAL -5 MONTH), '01-%m-%Y') AND NOW()
+            GROUP BY c.category_id, c.name, c.type;";
 
         $datas = DB::select($query);
         return $datas;

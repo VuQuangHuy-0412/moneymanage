@@ -48,7 +48,7 @@
                     <a class="nav-link" href="{!! route('app.activity') !!}">Hoạt động</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="{!! route('app.report') !!}">Báo cáo</a>
+                    <a class="nav-link" href="{!! route('app.report-today') !!}">Báo cáo</a>
                 </li>
                 {{--<li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownPortfolio" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -91,17 +91,17 @@
         <nav class="sb-sidenav accordion sb-sidenav-dark" id="sidenavAccordion">
             <div class="sb-sidenav-menu">
                 <div class="nav">
-                    <div class="sb-sidenav-menu-heading">Báo cáo tổng quát</div>
-                    <a class="nav-link collapsed" href="{!! route('app.info') !!}" data-toggle="collapse" data-target="#collapseAll" aria-expanded="false" aria-controls="collapseDashboard">
-                        <div class="sb-nav-link-icon"><i class="fas fa-columns"></i></div>
-                        Báo cáo tổng quát
-                        <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
-                    </a>
-                    <div class="collapse" id="collapseAll" aria-labelledby="headingOne" data-parent="#sidenavAccordion">
-                        <nav class="sb-sidenav-menu-nested nav">
-                            <a class="nav-link" href="{!! route('app.report') !!}">Báo cáo tổng quát</a>
-                        </nav>
-                    </div>
+{{--                    <div class="sb-sidenav-menu-heading">Báo cáo tổng quát</div>--}}
+{{--                    <a class="nav-link collapsed" href="{!! route('app.info') !!}" data-toggle="collapse" data-target="#collapseAll" aria-expanded="false" aria-controls="collapseDashboard">--}}
+{{--                        <div class="sb-nav-link-icon"><i class="fas fa-columns"></i></div>--}}
+{{--                        Báo cáo tổng quát--}}
+{{--                        <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>--}}
+{{--                    </a>--}}
+{{--                    <div class="collapse" id="collapseAll" aria-labelledby="headingOne" data-parent="#sidenavAccordion">--}}
+{{--                        <nav class="sb-sidenav-menu-nested nav">--}}
+{{--                            <a class="nav-link" href="{!! route('app.report') !!}">Báo cáo tổng quát</a>--}}
+{{--                        </nav>--}}
+{{--                    </div>--}}
 
                     <div class="sb-sidenav-menu-heading">Báo cáo hôm nay</div>
                     <a class="nav-link collapsed" href="{!! route('app.info') !!}" data-toggle="collapse" data-target="#collapseNow" aria-expanded="false" aria-controls="collapseDashboard">
@@ -228,6 +228,32 @@
                     </div>
                 </div>
             </div>
+{{--            <div class="row">--}}
+{{--                <div class="container-fluid col-xl-6">--}}
+{{--                    <h4>Đánh giá thu theo danh mục trong sáu tháng gần nhất</h4>--}}
+{{--                    <div class="col-xl-12">--}}
+{{--                        @if(!isset($datas) || empty($datas))--}}
+{{--                            <div style="height: 50px">Chưa có hoạt động thu nào trong sáu tháng gần nhất!</div>--}}
+{{--                        @else--}}
+{{--                            <div class="card mb-4">--}}
+{{--                                <div class="card-body"><canvas id="myBarChart1" width="100%" height="60"></canvas></div>--}}
+{{--                            </div>--}}
+{{--                        @endif--}}
+{{--                    </div>--}}
+{{--                </div>--}}
+{{--                <div class="container-fluid col-xl-6">--}}
+{{--                    <h4>Đánh giá chi theo danh mục trong sáu tháng gần nhất</h4>--}}
+{{--                    <div class="col-xl-12">--}}
+{{--                        @if(!isset($datas) || empty($datas))--}}
+{{--                            <div style="height: 50px">Chưa có hoạt động chi nào trong sáu tháng gần nhất!</div>--}}
+{{--                        @else--}}
+{{--                            <div class="card mb-4">--}}
+{{--                                <div class="card-body"><canvas id="myBarChart2" width="100%" height="60"></canvas></div>--}}
+{{--                            </div>--}}
+{{--                        @endif--}}
+{{--                    </div>--}}
+{{--                </div>--}}
+{{--            </div>--}}
             <div class="container-fluid">
                 <h4>Danh sách các hoạt động trong sáu tháng gần đây</h4>
                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
@@ -267,6 +293,7 @@
                     </div>
                 </div>
             </div>
+
         </main>
         <footer class="py-4 bg-light mt-auto">
             <div class="container-fluid">
