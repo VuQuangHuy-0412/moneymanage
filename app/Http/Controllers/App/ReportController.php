@@ -403,6 +403,140 @@ class ReportController extends BaseController
             return redirect()->route('login');
         }
 
-        return view('app.report.six_month', compact('logged'));
+        $datas = $this->get_amount_six_month();
+        $activities = $this->get_list_activity_six_month();
+        $detail = $this->get_money_six_month();
+
+        return view('app.report.six_month', compact('logged', 'detail', 'datas', 'activities'));
+    }
+
+    public function get_money_six_month() {
+        $logged = auth()->user();
+        $user_id = $logged->user_id;
+        $query = "
+            SELECT b.month, if(a.thu IS NULL, 0, a.thu) thu, if(a.chi IS NULL, 0, a.chi) chi
+            FROM
+            (
+                SELECT
+                    DATE_FORMAT(str_to_date(a.date, '%m/%d/%Y'), '%m-%Y') AS month,
+                    SUM(if(a.type = 0, a.money_amount, 0)) thu,
+                    SUM(if(a.type = 1, a.money_amount, 0)) chi
+                FROM
+                (
+                    SELECT ua.*, c.type, c.name AS category_name
+                    FROM money_manage.user_activity ua
+                    JOIN money_manage.category c ON ua.category_id = c.category_id
+                    WHERE ua.user_id = $user_id
+                    AND ua.created_at BETWEEN ADDDATE(NOW(),INTERVAL -6 MONTH) AND NOW()
+                ) a
+                GROUP BY DATE_FORMAT(str_to_date(a.date, '%m/%d/%Y'), '%m-%Y')
+                ORDER BY a.activity_id
+                LIMIT 6
+            ) a
+            RIGHT JOIN
+            (
+                SELECT
+                    (case
+                    when sd.STT=1 then a.MONTH1
+                    when sd.STT=2 then a.MONTH2
+                    when sd.STT=3 then a.MONTH3
+                    when sd.STT=4 then a.MONTH4
+                    when sd.STT=5 then a.MONTH5
+                    when sd.STT=6 then a.MONTH6
+                    END) AS month
+                FROM
+                (
+                    SELECT
+                        DATE_FORMAT(NOW(), '%m-%Y') AS MONTH6,
+                        DATE_FORMAT(ADDDATE(NOW(),INTERVAL -5 MONTH), '%m-%Y') AS MONTH1,
+                        DATE_FORMAT(ADDDATE(NOW(),INTERVAL -4 MONTH), '%m-%Y') AS MONTH2,
+                        DATE_FORMAT(ADDDATE(NOW(),INTERVAL -3 MONTH), '%m-%Y') AS MONTH3,
+                        DATE_FORMAT(ADDDATE(NOW(),INTERVAL -2 MONTH), '%m-%Y') AS MONTH4,
+                        DATE_FORMAT(ADDDATE(NOW(),INTERVAL -1 MONTH), '%m-%Y') AS MONTH5
+                ) a, money_manage.seven_date sd
+                LIMIT 6
+            ) b ON a.month = b.month;";
+
+        $datas = DB::select($query);
+
+        return $datas;
+    }
+
+    public function get_amount_six_month() {
+        $logged = auth()->user();
+        $user_id = $logged->user_id;
+        $query = "
+            select sum(z.thu) as tien_thu, sum(z.chi) as tien_chi
+            from
+            (
+                SELECT b.month, if(a.thu IS NULL, 0, a.thu) thu, if(a.chi IS NULL, 0, a.chi) chi
+                FROM
+                (
+                    SELECT
+                        DATE_FORMAT(str_to_date(a.date, '%m/%d/%Y'), '%m-%Y') AS month,
+                        SUM(if(a.type = 0, a.money_amount, 0)) thu,
+                        SUM(if(a.type = 1, a.money_amount, 0)) chi
+                    FROM
+                    (
+                        SELECT ua.*, c.type, c.name AS category_name
+                        FROM money_manage.user_activity ua
+                        JOIN money_manage.category c ON ua.category_id = c.category_id
+                        WHERE ua.user_id = $user_id
+                        AND ua.created_at BETWEEN ADDDATE(NOW(),INTERVAL -6 MONTH) AND NOW()
+                    ) a
+                    GROUP BY DATE_FORMAT(str_to_date(a.date, '%m/%d/%Y'), '%m-%Y')
+                    ORDER BY a.activity_id
+                    LIMIT 6
+                ) a
+                RIGHT JOIN
+                (
+                    SELECT
+                        (case
+                        when sd.STT=1 then a.MONTH1
+                        when sd.STT=2 then a.MONTH2
+                        when sd.STT=3 then a.MONTH3
+                        when sd.STT=4 then a.MONTH4
+                        when sd.STT=5 then a.MONTH5
+                        when sd.STT=6 then a.MONTH6
+                        END) AS month
+                    FROM
+                    (
+                        SELECT
+                            DATE_FORMAT(NOW(), '%m-%Y') AS MONTH6,
+                            DATE_FORMAT(ADDDATE(NOW(),INTERVAL -5 MONTH), '%m-%Y') AS MONTH1,
+                            DATE_FORMAT(ADDDATE(NOW(),INTERVAL -4 MONTH), '%m-%Y') AS MONTH2,
+                            DATE_FORMAT(ADDDATE(NOW(),INTERVAL -3 MONTH), '%m-%Y') AS MONTH3,
+                            DATE_FORMAT(ADDDATE(NOW(),INTERVAL -2 MONTH), '%m-%Y') AS MONTH4,
+                            DATE_FORMAT(ADDDATE(NOW(),INTERVAL -1 MONTH), '%m-%Y') AS MONTH5
+                    ) a, money_manage.seven_date sd
+                    LIMIT 6
+                ) b ON a.month = b.month
+            ) z;
+        ";
+
+        $datas = DB::select($query);
+
+        return $datas;
+    }
+
+    public function get_list_activity_six_month() {
+        $logged = auth()->user();
+        $user_id = $logged->user_id;
+        $query = "
+            SELECT
+                ua.name,
+                ua.money_amount,
+                ua.`describe`,
+                c.name AS ten_danh_muc,
+                c.`type`,
+                date_format(STR_TO_DATE(ua.date, '%m/%d/%Y'), '%d-%m-%Y') as `date`
+			FROM money_manage.user_activity ua
+			JOIN money_manage.category c ON ua.category_id = c.category_id
+			WHERE ua.user_id = $user_id
+			AND ua.created_at BETWEEN DATE_FORMAT(ADDDATE(NOW(),INTERVAL -5 MONTH), '01-%m-%Y') AND NOW()
+			ORDER BY ua.activity_id DESC;";
+
+        $datas = DB::select($query);
+        return $datas;
     }
 }

@@ -157,23 +157,28 @@
                     <li class="breadcrumb-item active">Báo Cáo Sáu Tháng Gần Nhất</li>
                 </ol>
             </div>
+            @for($i = 1; $i < 7; $i++)
+                <input type="hidden" id="month{{$i}}" value="{{$detail[$i-1]->month}}">
+                <input type="hidden" id="tien_thu_{{$i}}1" value="{{$detail[$i-1]->thu}}">
+                <input type="hidden" id="tien_chi_{{$i}}1" value="{{$detail[$i-1]->chi}}">
+            @endfor
             <div class="container-fluid">
                 <div class="row">
                     <div class="col-xl-6 col-md-12">
                         <div class="card bg-primary text-white mb-4">
-                            <div class="card-body">Tổng số tiền đã chi trong tháng</div>
+                            <div class="card-body">Tổng số tiền đã chi trong sáu tháng gần đây</div>
                             <div class="card-footer d-flex align-items-center justify-content-between">
                                 @if(!isset($datas[0]->tien_chi) || empty($datas[0]->tien_chi)) 0 đồng
                                 @else
                                     {{number_format($datas[0]->tien_chi, 0, ",", ".")}} đồng
-                                    <input type="hidden" id="tien_thu" value="{{$datas[0]->tien_thu}}">
+                                    <input type="hidden" id="tien_chi" value="{{$datas[0]->tien_chi}}">
                                 @endif
                             </div>
                         </div>
                     </div>
                     <div class="col-xl-6 col-md-12">
                         <div class="card bg-primary text-white mb-4">
-                            <div class="card-body">Tổng số tiền đã thu trong tháng</div>
+                            <div class="card-body">Tổng số tiền đã thu trong sáu tháng gần đây</div>
                             <div class="card-footer d-flex align-items-center justify-content-between">
                                 @if(!isset($datas[0]->tien_thu) || empty($datas[0]->tien_thu)) 0 đồng
                                 @else
@@ -186,19 +191,45 @@
                 </div>
             </div>
             <div class="container-fluid">
-                <h4>Tương quan thu chi trong tháng</h4>
+                <h4>Tương quan thu chi trong sáu tháng gần đây</h4>
                 <div class="col-xl-6">
                     @if(!isset($datas) || empty($datas))
-                        <div style="height: 50px">Chưa có hoạt động nào trong tháng này!</div>
+                        <div style="height: 50px">Chưa có hoạt động nào trong sáu tháng gần đây!</div>
                     @else
                         <div class="card mb-4">
-                            <div class="card-body"><canvas id="myBarChart" width="100%" height="40"></canvas></div>
+                            <div class="card-body"><canvas id="myBarChart" width="100%" height="80"></canvas></div>
                         </div>
                     @endif
                 </div>
             </div>
+            <div class="row">
+                <div class="container-fluid col-xl-6">
+                    <h4>Tương quan thu trong sáu tháng gần nhất</h4>
+                    <div class="col-xl-12">
+                        @if(!isset($datas) || empty($datas))
+                            <div style="height: 50px">Chưa có hoạt động thu nào trong sáu tháng gần nhất!</div>
+                        @else
+                            <div class="card mb-4">
+                                <div class="card-body"><canvas id="myAreaChart2" width="100%" height="60"></canvas></div>
+                            </div>
+                        @endif
+                    </div>
+                </div>
+                <div class="container-fluid col-xl-6">
+                    <h4>Tương quan chi trong sáu tháng gần nhất</h4>
+                    <div class="col-xl-12">
+                        @if(!isset($datas) || empty($datas))
+                            <div style="height: 50px">Chưa có hoạt động chi nào trong sáu tháng gần nhất!</div>
+                        @else
+                            <div class="card mb-4">
+                                <div class="card-body"><canvas id="myAreaChart3" width="100%" height="60"></canvas></div>
+                            </div>
+                        @endif
+                    </div>
+                </div>
+            </div>
             <div class="container-fluid">
-                <h4>Danh sách các hoạt động trong tháng</h4>
+                <h4>Danh sách các hoạt động trong sáu tháng gần đây</h4>
                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                     <div class="ibox-content">
                         <table class="table table-bordered">
@@ -209,11 +240,11 @@
                                 <th>Loại danh mục</th>
                                 <th>Ngày</th>
                                 <th>Số tiền (đồng)</th>
-                                <th>Mô tả</th>
+                                <th width="70px">Mô tả</th>
                             </tr>
                             @if(!isset($activities) || empty($activities))
                                 <tr>
-                                    <td class="text-center" colspan="5">Chưa có hoạt động nào trong tháng này!</td>
+                                    <td class="text-center" colspan="5">Chưa có hoạt động nào trong sáu tháng gần đây!</td>
                                 </tr>
                             @else
                                 @foreach($activities as $a)
@@ -255,7 +286,7 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
 <script src="js/scripts.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js" crossorigin="anonymous"></script>
-<script src="assets/demo/chart-area-demo.js"></script>
+<script src="assets/demo/chart-area-demo-2.js"></script>
 <script src="assets/demo/chart-bar-demo.js"></script>
 <script src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js" crossorigin="anonymous"></script>
 <script src="https://cdn.datatables.net/1.10.20/js/dataTables.bootstrap4.min.js" crossorigin="anonymous"></script>
