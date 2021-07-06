@@ -240,7 +240,7 @@
                                 <th>Loại danh mục</th>
                                 <th>Ngày</th>
                                 <th>Số tiền (đồng)</th>
-                                <th width="70px">Mô tả</th>
+                                <th width="200px">Mô tả</th>
                             </tr>
                             @if(!isset($activities) || empty($activities))
                                 <tr>
