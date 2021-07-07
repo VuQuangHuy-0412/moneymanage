@@ -41,20 +41,24 @@ class ReportController extends BaseController
         $logged = auth()->user();
         $user_id = $logged->user_id;
         $query = "
-            SELECT
-                if(a.type = 0, a.so_tien, 0) tien_thu,
-                if(a.type = 1, a.so_tien, 0) tien_chi
+            SELECT SUM(b.tien_thu) tien_thu, SUM(b.tien_chi) tien_chi
             FROM
             (
                 SELECT
-                    c.type,
-                    SUM(ua.money_amount) so_tien
-                FROM money_manage.user_activity ua
-                JOIN money_manage.category c ON ua.category_id = c.category_id
-                WHERE ua.user_id = $user_id
-                AND date_format(STR_TO_DATE(ua.date, '%m/%d/%Y'), '%d-%m-%Y') = date_format(CURDATE(), '%d-%m-%Y')
-                GROUP BY c.`type`
-            ) a;";
+                    if(a.type = 0, a.so_tien, 0) tien_thu,
+                    if(a.type = 1, a.so_tien, 0) tien_chi
+                FROM
+                (
+                    SELECT
+                        c.type,
+                        SUM(ua.money_amount) so_tien
+                    FROM money_manage.user_activity ua
+                    JOIN money_manage.category c ON ua.category_id = c.category_id
+                    WHERE ua.user_id = $user_id
+                    AND date_format(STR_TO_DATE(ua.date, '%m/%d/%Y'), '%d-%m-%Y') = date_format(CURDATE(), '%d-%m-%Y')
+                    GROUP BY c.`type`
+                ) a
+            ) b;";
 
         $datas = DB::select($query);
 
@@ -97,20 +101,24 @@ class ReportController extends BaseController
         $logged = auth()->user();
         $user_id = $logged->user_id;
         $query = "
-            SELECT
-                if(a.type = 0, a.so_tien, 0) tien_thu,
-                if(a.type = 1, a.so_tien, 0) tien_chi
-            FROM
+            select SUM(b.tien_thu) tien_thu, SUM(b.tien_chi) tien_chi
+            from
             (
                 SELECT
-                    c.type,
-                    SUM(ua.money_amount) so_tien
-                FROM money_manage.user_activity ua
-                JOIN money_manage.category c ON ua.category_id = c.category_id
-                WHERE ua.user_id = $user_id
-                AND date_format(STR_TO_DATE(ua.date, '%m/%d/%Y'), '%Y-%m') = date_format(CURDATE(), '%Y-%m')
-                GROUP BY c.`type`
-            ) a;";
+                    if(a.type = 0, a.so_tien, 0) tien_thu,
+                    if(a.type = 1, a.so_tien, 0) tien_chi
+                FROM
+                (
+                    SELECT
+                        c.type,
+                        SUM(ua.money_amount) so_tien
+                    FROM money_manage.user_activity ua
+                    JOIN money_manage.category c ON ua.category_id = c.category_id
+                    WHERE ua.user_id = $user_id
+                    AND date_format(STR_TO_DATE(ua.date, '%m/%d/%Y'), '%Y-%m') = date_format(CURDATE(), '%Y-%m')
+                    GROUP BY c.`type`
+                ) a
+            ) b;";
 
         $datas = DB::select($query);
 
@@ -165,20 +173,24 @@ class ReportController extends BaseController
         $logged = auth()->user();
         $user_id = $logged->user_id;
         $query = "
-            SELECT
-                if(a.type = 0, a.so_tien, 0) tien_thu,
-                if(a.type = 1, a.so_tien, 0) tien_chi
-            FROM
+            select SUM(b.tien_thu) tien_thu, SUM(b.tien_chi) tien_chi
+            from
             (
                 SELECT
-                    c.type,
-                    SUM(ua.money_amount) so_tien
-                FROM money_manage.user_activity ua
-                JOIN money_manage.category c ON ua.category_id = c.category_id
-                WHERE ua.user_id = $user_id
-                AND date_format(STR_TO_DATE(ua.date, '%m/%d/%Y'), '%d-%m-%Y') = '$date'
-                GROUP BY c.`type`
-            ) a;";
+                    if(a.type = 0, a.so_tien, 0) tien_thu,
+                    if(a.type = 1, a.so_tien, 0) tien_chi
+                FROM
+                (
+                    SELECT
+                        c.type,
+                        SUM(ua.money_amount) so_tien
+                    FROM money_manage.user_activity ua
+                    JOIN money_manage.category c ON ua.category_id = c.category_id
+                    WHERE ua.user_id = $user_id
+                    AND date_format(STR_TO_DATE(ua.date, '%m/%d/%Y'), '%d-%m-%Y') = '$date'
+                    GROUP BY c.`type`
+                ) a
+            ) b;";
 
         $datas = DB::select($query);
 
@@ -355,20 +367,24 @@ class ReportController extends BaseController
         $logged = auth()->user();
         $user_id = $logged->user_id;
         $query = "
-            SELECT
-                if(a.type = 0, a.so_tien, 0) tien_thu,
-                if(a.type = 1, a.so_tien, 0) tien_chi
-            FROM
+            select SUM(b.tien_thu) tien_thu, SUM(b.tien_chi) tien_chi
+            from
             (
                 SELECT
-                    c.type,
-                    SUM(ua.money_amount) so_tien
-                FROM money_manage.user_activity ua
-                JOIN money_manage.category c ON ua.category_id = c.category_id
-                WHERE ua.user_id = $user_id
-                AND date_format(STR_TO_DATE(ua.date, '%m/%d/%Y'), '%m-%Y') = '$month'
-                GROUP BY c.`type`
-            ) a;";
+                    if(a.type = 0, a.so_tien, 0) tien_thu,
+                    if(a.type = 1, a.so_tien, 0) tien_chi
+                FROM
+                (
+                    SELECT
+                        c.type,
+                        SUM(ua.money_amount) so_tien
+                    FROM money_manage.user_activity ua
+                    JOIN money_manage.category c ON ua.category_id = c.category_id
+                    WHERE ua.user_id = $user_id
+                    AND date_format(STR_TO_DATE(ua.date, '%m/%d/%Y'), '%m-%Y') = '$month'
+                    GROUP BY c.`type`
+                ) a
+            ) b;";
 
         $datas = DB::select($query);
 

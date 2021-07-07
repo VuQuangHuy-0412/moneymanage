@@ -196,7 +196,7 @@
                                 @if(!isset($datas[0]->tien_chi) || empty($datas[0]->tien_chi)) 0 đồng
                                 @else
                                     {{number_format($datas[0]->tien_chi, 0, ",", ".")}} đồng
-                                    <input type="hidden" id="tien_thu" value="{{$datas[0]->tien_thu}}">
+                                    <input type="hidden" id="tien_chi" value="{{$datas[0]->tien_chi}}">
                                 @endif
                             </div>
                         </div>
@@ -222,7 +222,7 @@
                         <div style="height: 50px">Chưa có hoạt động nào trong tháng {{$month}}!</div>
                     @else
                         <div class="card mb-4">
-                            <div class="card-body"><canvas id="myBarChart" width="100%" height="40"></canvas></div>
+                            <div class="card-body"><canvas id="myBarChart" width="100%" height="80"></canvas></div>
                         </div>
                     @endif
                 </div>

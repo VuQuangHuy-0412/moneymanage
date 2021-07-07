@@ -222,7 +222,7 @@
                         <div style="height: 50px">Chưa có hoạt động nào trong hôm nay!</div>
                     @else
                         <div class="card mb-4">
-                            <div class="card-body"><canvas id="myBarChart" width="100%" height="40"></canvas></div>
+                            <div class="card-body"><canvas id="myBarChart" width="100%" height="80"></canvas></div>
                         </div>
                     @endif
                 </div>
